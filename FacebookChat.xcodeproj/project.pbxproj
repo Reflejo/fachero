@@ -39,6 +39,12 @@
 		4B10E17A1538E38800616AC4 /* onlineIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B10E1781538E38800616AC4 /* onlineIndicator.png */; };
 		4BE0A19A153944400030E26B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A199153944400030E26B /* MainMenu.xib */; };
 		4BE0A19C1539444B0030E26B /* ChatWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A19B1539444B0030E26B /* ChatWindow.xib */; };
+		4BE0A1A815394DBD0030E26B /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0A1A715394DBD0030E26B /* LoginView.m */; };
+		4BE0A1AA15394EBD0030E26B /* loginLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1A915394EBD0030E26B /* loginLogo.png */; };
+		4BE0A1AC15394F850030E26B /* inputBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1AB15394F850030E26B /* inputBackground.png */; };
+		4BE0A1B015395BEB0030E26B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE0A1AF15395BEB0030E26B /* QuartzCore.framework */; };
+		4BE0A1B115395CF60030E26B /* PanelTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0A1AE15395AE70030E26B /* PanelTabController.m */; };
+		4BE0A1B315395D770030E26B /* restrictedshine.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1B215395D770030E26B /* restrictedshine.tiff */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -186,6 +192,14 @@
 		4B10E1781538E38800616AC4 /* onlineIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onlineIndicator.png; sourceTree = "<group>"; };
 		4BE0A199153944400030E26B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		4BE0A19B1539444B0030E26B /* ChatWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatWindow.xib; sourceTree = "<group>"; };
+		4BE0A1A615394DBD0030E26B /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		4BE0A1A715394DBD0030E26B /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		4BE0A1A915394EBD0030E26B /* loginLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginLogo.png; sourceTree = "<group>"; };
+		4BE0A1AB15394F850030E26B /* inputBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inputBackground.png; sourceTree = "<group>"; };
+		4BE0A1AD15395AE70030E26B /* PanelTabController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanelTabController.h; sourceTree = "<group>"; };
+		4BE0A1AE15395AE70030E26B /* PanelTabController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PanelTabController.m; sourceTree = "<group>"; };
+		4BE0A1AF15395BEB0030E26B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4BE0A1B215395D770030E26B /* restrictedshine.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = restrictedshine.tiff; path = ../../../../Penteskine/Penteskine/Penteskine/Resources/Projects/restrictedshine.tiff; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* FacebookChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacebookChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0AC2771346E20800D053E3 /* XMPPvCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPPvCard.xcdatamodel; sourceTree = "<group>"; };
@@ -381,6 +395,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE0A1B015395BEB0030E26B /* QuartzCore.framework in Frameworks */,
 				DCFE9FA513413C4E007C5391 /* CoreLocation.framework in Frameworks */,
 				DCFE9FA113413B5A007C5391 /* libidn.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
@@ -409,6 +424,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0A1AF15395BEB0030E26B /* QuartzCore.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				DC55892910DFD9040004696B /* SystemConfiguration.framework */,
 				DC73031212F532BF00549AC7 /* Security.framework */,
@@ -535,6 +551,9 @@
 		4B10E17C153938F200616AC4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0A1B215395D770030E26B /* restrictedshine.tiff */,
+				4BE0A1AB15394F850030E26B /* inputBackground.png */,
+				4BE0A1A915394EBD0030E26B /* loginLogo.png */,
 				4B10E1511538870000616AC4 /* avatarPlaceholder.png */,
 				4B10E14A15380A8D00616AC4 /* avatarShadow.png */,
 				4B10E1291537FD2F00616AC4 /* WindowToolbarButtons */,
@@ -545,6 +564,15 @@
 				4B10E1611538B1F500616AC4 /* settingsButton.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		4BE0A1A515394D9D0030E26B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4BE0A1A615394DBD0030E26B /* LoginView.h */,
+				4BE0A1A715394DBD0030E26B /* LoginView.m */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		DC1C5CA2115BA78300F84438 /* Core Data Storage */ = {
@@ -941,7 +969,10 @@
 			isa = PBXGroup;
 			children = (
 				4BE0A199153944400030E26B /* MainMenu.xib */,
+				4BE0A1A515394D9D0030E26B /* Login */,
 				4B10E15515389FF000616AC4 /* Contact List */,
+				4BE0A1AD15395AE70030E26B /* PanelTabController.h */,
+				4BE0A1AE15395AE70030E26B /* PanelTabController.m */,
 				DCCE555F0BDC6FAC000E2798 /* RosterController.h */,
 				DCCE55600BDC6FAC000E2798 /* RosterController.m */,
 			);
@@ -1133,6 +1164,9 @@
 				4B10E17A1538E38800616AC4 /* onlineIndicator.png in Resources */,
 				4BE0A19A153944400030E26B /* MainMenu.xib in Resources */,
 				4BE0A19C1539444B0030E26B /* ChatWindow.xib in Resources */,
+				4BE0A1AA15394EBD0030E26B /* loginLogo.png in Resources */,
+				4BE0A1AC15394F850030E26B /* inputBackground.png in Resources */,
+				4BE0A1B315395D770030E26B /* restrictedshine.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,6 +1177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE0A1B115395CF60030E26B /* PanelTabController.m in Sources */,
 				4B10E1581538A17600616AC4 /* ItemTableCellView.m in Sources */,
 				4B10E1591538A17600616AC4 /* ItemTableRowView.m in Sources */,
 				4B10E1491537FE8000616AC4 /* WindowToolBar.m in Sources */,
@@ -1237,6 +1272,7 @@
 				DC107E4514E1B0E000037504 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				4B10E0BC1537DABA00616AC4 /* CustomWindow.m in Sources */,
 				4B10E14E153884D100616AC4 /* RoundedAvatar.m in Sources */,
+				4BE0A1A815394DBD0030E26B /* LoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,7 +1340,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
@@ -1317,13 +1353,14 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-Wno-arc-performSelector-leaks";
 				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
@@ -1334,6 +1371,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_CFLAGS = "-Wno-arc-performSelector-leaks";
 				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};

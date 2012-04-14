@@ -37,7 +37,6 @@ static NSMutableArray *chatControllers;
 + (ChatController *)chatControllerForJID:(XMPPJID *)jid matchResource:(BOOL)matchResource
 {
 	// Loop through all the open chat windows, and see if any of them are the one we want...
-
 	XMPPJIDCompareOptions options = matchResource ? XMPPJIDCompareFull : XMPPJIDCompareBare;
 	
 	for (ChatController *chatController in chatControllers)

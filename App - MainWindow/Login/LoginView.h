@@ -15,32 +15,10 @@
  * limitations under the License.
  */
 
-#import "XMPP.h"
-#import "XMPPReconnect.h"
+@interface LoginView : NSView {
+	IBOutlet NSTextField *username;
+	IBOutlet NSTextField *password;
+}
 
-#import "XMPPRoster.h"
-#import "XMPPRosterMemoryStorage.h"
 
-#import "XMPPMUC.h"
-#import "XMPPRoom.h"
-#import "XMPPRoomMemoryStorage.h"
-#import "XMPPRoomCoreDataStorage.h"
-#import "XMPPRoomHybridStorage.h"
-
-#import "XMPPvCardTempModule.h"
-
-#import "TURNSocket.h"
-
-#import "XMPPCapabilities.h"
-#import "XMPPCapabilitiesCoreDataStorage.h"
-#import "XMPPUserCoreDataStorageObject.h"
-#import "XMPPRosterCoreDataStorage.h"
-
-#import "XMPPvCardAvatarModule.h"
-#import "XMPPvCardCoreDataStorage.h"
-
-#import "XMPPPing.h"
-#import "XMPPAutoPing.h"
-
-#import "XMPPTime.h"
-#import "XMPPAutoTime.h"
+@end

@@ -36,6 +36,8 @@
     [titleView setGradient:initColor endColor:endColor];
     [titleView setFrame:newFrame];
     [themeFrame addSubview:titleView];
+    
+    [self setBackgroundColor:kMainWindowGradientInit];
 
     // Hide default window buttons and remove title
     [[self standardWindowButton:NSWindowCloseButton] setHidden:YES];
@@ -44,5 +46,9 @@
     [self setTitle:@""];
 }
 
+-(void)setToolbarHidden:(BOOL)hide
+{
+    [titleView setHidden:hide];
+}
 
 @end

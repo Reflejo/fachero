@@ -21,6 +21,7 @@
 #import "SSKeychain.h"
 
 #import <SystemConfiguration/SystemConfiguration.h>
+#import <QuartzCore/CoreAnimation.h>
 
 
 @implementation RosterController
@@ -82,9 +83,6 @@
 		// focus to our application
 		[NSApp activateIgnoringOtherApps:YES];
 	}
-							  
-	[NSApp beginSheet:signInSheet modalForWindow:window
-	    modalDelegate:self didEndSelector:nil contextInfo:nil];	
 }
 
 - (void)enableSignInUI:(BOOL)enabled
@@ -211,6 +209,8 @@
 	
 	if (user.isOnline) [avatar setOnline];
 	else [avatar setOffline];
+	
+	[avatar setNeedsDisplay:YES];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -268,6 +268,31 @@
 	return NO;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Window animations
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (CAKeyframeAnimation *)shakeAnimation:(NSRect)frame
+{
+    CAKeyframeAnimation *shakeAnimation = [CAKeyframeAnimation animation];
+    
+    CGMutablePathRef shakePath = CGPathCreateMutable();
+    CGPathMoveToPoint(shakePath, NULL, NSMinX(frame), NSMinY(frame));
+    int index;
+    for (index = 0; index < kNumberOfShakes; ++index)
+    {
+        CGPathAddLineToPoint(shakePath, NULL, 
+                             NSMinX(frame) - frame.size.width * kVigourOfShake, 
+                             NSMinY(frame));
+        CGPathAddLineToPoint(shakePath, NULL, 
+                             NSMinX(frame) + frame.size.width * kVigourOfShake,
+                             NSMinY(frame));
+    }
+    CGPathCloseSubpath(shakePath);
+    shakeAnimation.path = shakePath;
+    shakeAnimation.duration = kDurationOfShake;
+    return shakeAnimation;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPClient Delegate Methods
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -300,8 +325,8 @@
 	isAuthenticating = NO;
 	
 	// Close the sheet
-	[signInSheet orderOut:self];
-	[NSApp endSheet:signInSheet];
+	[tabs selectNextTabViewItem:nil];
+	[(CustomWindow *)window setToolbarHidden:NO];
 	
 	// Send presence
 	[self goOnline];
@@ -311,6 +336,12 @@
 {
 	DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 	
+	// Shake window!
+	NSRect rect = [window frame];
+	[window setAnimations:[NSDictionary dictionaryWithObject:[self shakeAnimation:rect] 
+													  forKey:@"frameOrigin"]];
+	[[window animator] setFrameOrigin:rect.origin];
+
 	// Update tracking variables
 	isAuthenticating = NO;
 	

@@ -23,5 +23,6 @@
 }
 
 -(void)setBarWithInitColor:(NSColor *)initColor endColor:(NSColor *)endColor;
+-(void)setToolbarHidden:(BOOL)hide;
 
 @end

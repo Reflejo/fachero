@@ -15,32 +15,24 @@
  * limitations under the License.
  */
 
-#import "XMPP.h"
-#import "XMPPReconnect.h"
+#import <AppKit/AppKit.h>
 
-#import "XMPPRoster.h"
-#import "XMPPRosterMemoryStorage.h"
+@class CIFilter;
+@class CIImage;
 
-#import "XMPPMUC.h"
-#import "XMPPRoom.h"
-#import "XMPPRoomMemoryStorage.h"
-#import "XMPPRoomCoreDataStorage.h"
-#import "XMPPRoomHybridStorage.h"
+@interface PanelTabController : NSTabView <NSAnimationDelegate>
+{
+    // the Core Image transition filter that will generate the animation frames
+    CIFilter        *transitionFilter; 
+    // An environment-map image that the transitionFilter may use in generating the transition effect
+    CIImage         *inputShadingImage;
+    NSRect          imageRect;
+    NSAnimation     *animation;
+}
 
-#import "XMPPvCardTempModule.h"
+@end
 
-#import "TURNSocket.h"
+// Create a subclass of NSAnimation that we'll use to drive the transition.
+@interface TabViewAnimation : NSAnimation
+@end
 
-#import "XMPPCapabilities.h"
-#import "XMPPCapabilitiesCoreDataStorage.h"
-#import "XMPPUserCoreDataStorageObject.h"
-#import "XMPPRosterCoreDataStorage.h"
-
-#import "XMPPvCardAvatarModule.h"
-#import "XMPPvCardCoreDataStorage.h"
-
-#import "XMPPPing.h"
-#import "XMPPAutoPing.h"
-
-#import "XMPPTime.h"
-#import "XMPPAutoTime.h"
