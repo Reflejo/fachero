@@ -16,8 +16,8 @@
  */
 
 @interface LoginView : NSView {
-	IBOutlet NSTextField *username;
-	IBOutlet NSTextField *password;
+    IBOutlet NSTextField *username;
+    IBOutlet NSTextField *password;
 }
 
 

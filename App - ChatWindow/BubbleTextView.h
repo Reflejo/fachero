@@ -15,27 +15,15 @@
  * limitations under the License.
  */
 
-@class XMPPStream;
-@class XMPPMessage;
-@class XMPPJID;
-
-@interface ChatController : NSWindowController
-{
-    __strong XMPPStream *xmppStream;
-    __strong XMPPJID *jid;
-    __strong XMPPMessage *firstMessage;
-    
-    IBOutlet id messageField;
-    IBOutlet id messageView;
-    IBOutlet NSScrollView *containerView;
+@interface BubbleTextView : NSTextView {
+    NSArray *bubbleParts;
 }
 
-- (id)initWithStream:(XMPPStream *)xmppStream jid:(XMPPJID *)jid;
-- (id)initWithStream:(XMPPStream *)xmppStream jid:(XMPPJID *)jid message:(XMPPMessage *)message;
+typedef enum _BubbleStyles {
+	kBubbleFrom  = 1,
+	kBubbleTo = 2
+} BubbleStyles;
 
-@property (nonatomic, readonly) XMPPStream *xmppStream;
-@property (nonatomic, readonly) XMPPJID *jid;
-
-- (IBAction)sendMessage:(id)sender;
+- (id)initWithFrame:(NSRect)rect style:(BubbleStyles)style;
 
 @end

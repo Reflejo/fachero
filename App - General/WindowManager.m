@@ -24,10 +24,10 @@ static NSMutableArray *chatControllers;
 
 + (void)initialize
 {
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{		
-		chatControllers = [[NSMutableArray alloc] init];
-	});
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{        
+        chatControllers = [[NSMutableArray alloc] init];
+    });
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,49 +36,49 @@ static NSMutableArray *chatControllers;
 
 + (ChatController *)chatControllerForJID:(XMPPJID *)jid matchResource:(BOOL)matchResource
 {
-	// Loop through all the open chat windows, and see if any of them are the one we want...
-	XMPPJIDCompareOptions options = matchResource ? XMPPJIDCompareFull : XMPPJIDCompareBare;
-	
-	for (ChatController *chatController in chatControllers)
-	{
-		XMPPJID *currentJID = [chatController jid];
-		
-		if ([currentJID isEqualToJID:jid options:options])
-			return chatController;
-	}
-	
-	return nil;
+    // Loop through all the open chat windows, and see if any of them are the one we want...
+    XMPPJIDCompareOptions options = matchResource ? XMPPJIDCompareFull : XMPPJIDCompareBare;
+    
+    for (ChatController *chatController in chatControllers)
+    {
+        XMPPJID *currentJID = [chatController jid];
+        
+        if ([currentJID isEqualToJID:jid options:options])
+            return chatController;
+    }
+    
+    return nil;
 }
 
 + (void)openChatWindowWithStream:(XMPPStream *)xmppStream forUser:(id <XMPPUser>)user
 {
-	ChatController *chatController = [self chatControllerForJID:[user jid] matchResource:NO];
-	
-	if (chatController)
-	{
-		[[chatController window] makeKeyAndOrderFront:self];
-	}
-	else
-	{
-		// Create chat controller
-		XMPPJID *jid;
-		
-		id <XMPPResource> primaryResource = [user primaryResource];
-		if (primaryResource)
-			jid = [primaryResource jid];
-		else
-			jid = [user jid];
-		
-		chatController = [[ChatController alloc] initWithStream:xmppStream jid:jid];
-		[chatController showWindow:self];
-		
-		[chatControllers addObject:chatController];
-	}
+    ChatController *chatController = [self chatControllerForJID:[user jid] matchResource:NO];
+    
+    if (chatController)
+    {
+        [[chatController window] makeKeyAndOrderFront:self];
+    }
+    else
+    {
+        // Create chat controller
+        XMPPJID *jid;
+        
+        id <XMPPResource> primaryResource = [user primaryResource];
+        if (primaryResource)
+            jid = [primaryResource jid];
+        else
+            jid = [user jid];
+        
+        chatController = [[ChatController alloc] initWithStream:xmppStream jid:jid];
+        [chatController showWindow:self];
+        
+        [chatControllers addObject:chatController];
+    }
 }
 
 + (void)closeChatWindow:(ChatController *)chatController
 {
-	[chatControllers removeObject:chatController];
+    [chatControllers removeObject:chatController];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,18 +87,18 @@ static NSMutableArray *chatControllers;
 
 + (void)handleMessage:(XMPPMessage *)message withStream:(XMPPStream *)xmppStream
 {
-	ChatController *chatController = [self chatControllerForJID:[message from] matchResource:YES];
-	
-	if (chatController == nil)
-	{
-		// Create new chat window
-		XMPPJID *jid = [message from];
-		
-		chatController = [[ChatController alloc] initWithStream:xmppStream jid:jid message:message];
-		[chatController showWindow:self];
-		
-		[chatControllers addObject:chatController];
-	}
+    ChatController *chatController = [self chatControllerForJID:[message from] matchResource:YES];
+    
+    if (chatController == nil)
+    {
+        // Create new chat window
+        XMPPJID *jid = [message from];
+        
+        chatController = [[ChatController alloc] initWithStream:xmppStream jid:jid message:message];
+        [chatController showWindow:self];
+        
+        [chatControllers addObject:chatController];
+    }
 }
 
 @end

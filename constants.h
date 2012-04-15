@@ -28,20 +28,28 @@
                       blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 
-#undef DEBUG
+//#undef DEBUG
 
 // Log levels: off, error, warn, info, verbose
 static const int ddLogLevel = LOG_LEVEL_OFF;
 
+/*
+#define kBalloonHeight              46.0
+#define kBalloonWidth               77.0
+#define kBalloonTail                19.0
+#define kBalloonEnd                 10.0
+#define kBalloonBottom              14.0
+#define kBalloonTop                 9.0
+*/
 #define kMainWindowGradientInit     NSColorFromRGB(0x385f96)
 #define kMainWindowGradientEnd      NSColorFromRGB(0x2f5288)
-#define kLoginWindowHeight			370.0
+#define kLoginWindowHeight          370.0
 
-#define kNumberOfShakes				4
-#define kDurationOfShake			0.5f
-#define kVigourOfShake				0.03f
+#define kNumberOfShakes             4
+#define kDurationOfShake            0.5f
+#define kVigourOfShake              0.03f
 
-#define kServerDomain				@"chat.facebook.com"
-#define kServerPort					5222
+#define kServerDomain               @"chat.facebook.com"
+#define kServerPort                 5222
 
 #endif

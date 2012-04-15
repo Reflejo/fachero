@@ -22,6 +22,5 @@
 - (void)setIsSelected:(BOOL)isSelected;
 
 -(void)setUser:(id <XMPPUser>) user;
-//@property (nonatomic) id <XMPPUser> user;
 
 @end

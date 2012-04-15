@@ -12,32 +12,32 @@
 
 - (void)drawSelectionInRect:(NSRect)dirtyRect
 {
-    NSLog(@"SAIDJAIS");
-/*    NSImage *indicator = [NSImage imageNamed:@"selectedIndicator"];
+    float xOffset = NSMinX([self convertRect:[self frame] toView:nil]);
+    float yOffset = NSMaxY([self convertRect:[self frame] toView:nil]);
+    
+    [[NSGraphicsContext currentContext] setPatternPhase:NSMakePoint(xOffset, yOffset)];
+    [[NSColor colorWithPatternImage:[NSImage imageNamed:@"selectedIndicator"]] set];
+    NSRectFill([self bounds]);
+/*
+    NSImage *indicator = [NSImage imageNamed:@"selectedIndicator"];
     [indicator drawInRect:dirtyRect 
                  fromRect:dirtyRect//NSMakeRect(0, 0, indicator.size.width, indicator.size.height) 
                 operation:NSCompositeSourceOver
-                 fraction:1.0];*/
+                 fraction:1.0];
+*/
 }
 
 - (void)drawRect:(NSRect)dirtyRect
 {
+    if ([self isSelected])
+        return [super drawRect:dirtyRect];
+    
     float xOffset = NSMinX([self convertRect:[self frame] toView:nil]);
     float yOffset = NSMaxY([self convertRect:[self frame] toView:nil]);
 
-//    CGContextSetPatternPhase((CGContextRef)[[NSGraphicsContext currentContext] graphicsPort],
-//                             CGSizeMake(0, 0));
-//    [[NSGraphicsContext currentContext] saveGraphicsState];
     [[NSGraphicsContext currentContext] setPatternPhase:NSMakePoint(xOffset, yOffset)];
-
     [[NSColor colorWithPatternImage:[NSImage imageNamed:@"contactRowBackground"]] set];
     NSRectFill([self bounds]);
-//    [[NSGraphicsContext currentContext] restoreGraphicsState];
-    
-//    [super drawRect:dirtyRect];
-
-  //  NSRectFillUsingOperation(dirtyRect, NSCompositeSourceOver);*/
 }
-
 
 @end

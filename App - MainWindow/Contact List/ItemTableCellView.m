@@ -14,8 +14,6 @@
 
 @implementation ItemTableCellView
 
-//@synthesize user;
-
 /**
  * Remove shadow from Cells texts and change color/image if selected
  */
@@ -40,7 +38,6 @@
                   range:NSMakeRange(0, [attrs length])];
     
     [field setAttributedStringValue:attrs];
-//    [separator setHidden:isSelected];
 }
 
 - (void)setUser:(id <XMPPUser>)xmppuser

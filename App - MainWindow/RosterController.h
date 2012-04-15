@@ -22,27 +22,28 @@
 
 
 @interface RosterController : NSObject <NSTableViewDelegate> {
-	BOOL isOpen;
-	BOOL isAuthenticating;
+    BOOL isOpen;
+    BOOL isAuthenticating;
+    ItemTableCellView *lastSelected;
 
-	NSArray *roster;
+    NSArray *roster;
     
-	// Sign-In Sheet
-	IBOutlet NSTextField * jidField;
+    // Sign-In Sheet
+    IBOutlet NSTextField * jidField;
     IBOutlet NSTextField * passwordField;
-	IBOutlet NSButton    * rememberPasswordCheckbox;
+    IBOutlet NSButton    * rememberPasswordCheckbox;
     IBOutlet NSButton    * signInButton;
-	IBOutlet NSTextField * messageField;
+    IBOutlet NSTextField * messageField;
 
-	// Roster Window	
-	IBOutlet NSWindow    * window;
+    // Roster Window    
+    IBOutlet NSWindow    * window;
     IBOutlet NSTableView * rosterTable;
-	
-	// Profile info
-	IBOutlet NSTextField * userName;
-	IBOutlet RoundedAvatar * userAvatar;
-	
-	IBOutlet PanelTabController *tabs;
+    
+    // Profile info
+    IBOutlet NSTextField * userName;
+    IBOutlet RoundedAvatar * userAvatar;
+    
+    IBOutlet PanelTabController *tabs;
 }
 
 // Sign-In Sheet

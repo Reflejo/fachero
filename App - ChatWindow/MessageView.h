@@ -15,27 +15,15 @@
  * limitations under the License.
  */
 
-@class XMPPStream;
-@class XMPPMessage;
-@class XMPPJID;
+#import "BubbleTextView.h"
+#import "RoundedAvatar.h"
 
-@interface ChatController : NSWindowController
-{
-    __strong XMPPStream *xmppStream;
-    __strong XMPPJID *jid;
-    __strong XMPPMessage *firstMessage;
-    
-    IBOutlet id messageField;
-    IBOutlet id messageView;
-    IBOutlet NSScrollView *containerView;
+@interface MessageView : NSView {
+	BubbleTextView *bubble;
+	RoundedAvatar *avatarView;
 }
 
-- (id)initWithStream:(XMPPStream *)xmppStream jid:(XMPPJID *)jid;
-- (id)initWithStream:(XMPPStream *)xmppStream jid:(XMPPJID *)jid message:(XMPPMessage *)message;
-
-@property (nonatomic, readonly) XMPPStream *xmppStream;
-@property (nonatomic, readonly) XMPPJID *jid;
-
-- (IBAction)sendMessage:(id)sender;
+-(id)initWithFrame:(NSRect)frame message:(NSString *)message avatar:(NSImage *)avatar 
+			 style:(BubbleStyles)style;
 
 @end

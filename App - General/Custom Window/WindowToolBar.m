@@ -220,7 +220,7 @@ const CGFloat OSCornerClipRadius = 4.0;
 - (NSBezierPath *)clippingPathWithRect:(NSRect)aRect cornerRadius:(CGFloat)radius
 {
     NSBezierPath *path = [NSBezierPath bezierPath];
-	NSRect rect = NSInsetRect(aRect, radius, radius);
+    NSRect rect = NSInsetRect(aRect, radius, radius);
     NSPoint cornerPoint = NSMakePoint(NSMinX(aRect), NSMinY(aRect));
 
     // Create a rounded rectangle path, omitting the bottom left/right corners

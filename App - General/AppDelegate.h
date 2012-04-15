@@ -22,22 +22,22 @@
 
 @interface AppDelegate : NSObject
 {
-	__strong XMPPStream *xmppStream;
-	__strong XMPPReconnect *xmppReconnect;
-	__strong XMPPRoster *xmppRoster;
-	__strong XMPPRosterMemoryStorage *xmppRosterStorage;
-	__strong XMPPCapabilities *xmppCapabilities;
-	__strong XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
-	__strong XMPPPing *xmppPing;
-	__strong XMPPTime *xmppTime;
-
-	__strong XMPPvCardCoreDataStorage *xmppvCardStorage;
-	__strong XMPPvCardTempModule *xmppvCardTempModule;
-	__strong XMPPvCardAvatarModule *xmppvCardAvatarModule;
-
-	NSMutableArray *turnSockets;
-	
-	IBOutlet RosterController *rosterController;
+    __strong XMPPStream *xmppStream;
+    __strong XMPPReconnect *xmppReconnect;
+    __strong XMPPRoster *xmppRoster;
+    __strong XMPPRosterMemoryStorage *xmppRosterStorage;
+    __strong XMPPCapabilities *xmppCapabilities;
+    __strong XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
+    __strong XMPPPing *xmppPing;
+    __strong XMPPTime *xmppTime;
+    
+    __strong XMPPvCardCoreDataStorage *xmppvCardStorage;
+    __strong XMPPvCardTempModule *xmppvCardTempModule;
+    __strong XMPPvCardAvatarModule *xmppvCardAvatarModule;
+    
+    NSMutableArray *turnSockets;
+    
+    IBOutlet RosterController *rosterController;
     
     IBOutlet CustomWindow *window;
 }

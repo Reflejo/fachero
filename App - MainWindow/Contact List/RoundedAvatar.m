@@ -26,6 +26,12 @@
     return self;
 }
 
+-(void)setAvatar:(NSImage *)avatar
+{
+    [self setPicture:avatar];
+    [self setNeedsDisplay:YES];
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {   
     NSBezierPath* roundRectPath = [NSBezierPath bezierPathWithRoundedRect:[self bounds] 

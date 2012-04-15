@@ -13,11 +13,11 @@
 // Convenience function to clear an NSBitmapImageRep's bits to zero.
 static void ClearBitmapImageRep(NSBitmapImageRep *bitmap) 
 {
-	unsigned char *bitmapData = [bitmap bitmapData];
+    unsigned char *bitmapData = [bitmap bitmapData];
     
-	if (bitmapData)
-		// A fast alternative to filling with [NSColor clearColor]
-		bzero(bitmapData, [bitmap bytesPerRow] * [bitmap pixelsHigh]);
+    if (bitmapData)
+        // A fast alternative to filling with [NSColor clearColor]
+        bzero(bitmapData, [bitmap bytesPerRow] * [bitmap pixelsHigh]);
 }
 
 @implementation PanelTabController
@@ -27,35 +27,35 @@ static void ClearBitmapImageRep(NSBitmapImageRep *bitmap)
 
 - (void)awakeFromNib 
 {
-	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSData *shading = [NSData dataWithContentsOfFile:
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSData *shading = [NSData dataWithContentsOfFile:
                        [bundle pathForResource:@"restrictedshine" ofType:@"tiff"]];
-	NSBitmapImageRep *shadingBitmap = [[NSBitmapImageRep alloc] initWithData:shading];
-	inputShadingImage = [[CIImage alloc] initWithBitmapImageRep:shadingBitmap];
+    NSBitmapImageRep *shadingBitmap = [[NSBitmapImageRep alloc] initWithData:shading];
+    inputShadingImage = [[CIImage alloc] initWithBitmapImageRep:shadingBitmap];
 }
 
 - (void)drawRect:(NSRect)rect 
 {
-	// First, draw the normal TabView content.  If we're animating, we will have hidden 
+    // First, draw the normal TabView content.  If we're animating, we will have hidden 
     // the TabView's content view, so invoking [super drawRect:rect] will just draw the 
     // tabs, border, and inset background.
-	[super drawRect:rect];
+    [super drawRect:rect];
     
-	// If we're in the middle of animating, composite the animation result atop the base 
+    // If we're in the middle of animating, composite the animation result atop the base 
     // TabView content.
-	if (animation != nil) 
+    if (animation != nil) 
     {
-		// Get outputCIImage for the current phase of the animation.  (This doesn't 
+        // Get outputCIImage for the current phase of the animation.  (This doesn't 
         // actually cause the image to be rendered just yet.)
-		[transitionFilter setValue:[NSNumber numberWithFloat:[animation currentValue]] 
+        [transitionFilter setValue:[NSNumber numberWithFloat:[animation currentValue]] 
                             forKey:@"inputTime"];
-		CIImage *outputCIImage = [transitionFilter valueForKey:@"outputImage"];
+        CIImage *outputCIImage = [transitionFilter valueForKey:@"outputImage"];
         
-		[outputCIImage drawInRect:imageRect
+        [outputCIImage drawInRect:imageRect
                          fromRect:NSMakeRect(0, imageRect.size.height, imageRect.size.width, -imageRect.size.height) 
                         operation:NSCompositeSourceOver 
                          fraction:1.0];
-	}
+    }
 }
 
 - (void)createTransitionFilterForRect:(NSRect)rect initialCIImage:(CIImage *)initialCIImage
@@ -73,11 +73,11 @@ static void ClearBitmapImageRep(NSBitmapImageRep *bitmap)
                         forKey:@"inputExtent"];
     
     [transitionFilter setValue:inputShadingImage forKey:@"inputShadingImage"];*/
-	transitionFilter = [CIFilter filterWithName:@"CISwipeTransition"];
-	[transitionFilter setDefaults];
-	
-	[transitionFilter setValue:initialCIImage forKey:@"inputImage"];
-	[transitionFilter setValue:finalCIImage forKey:@"inputTargetImage"];
+    transitionFilter = [CIFilter filterWithName:@"CISwipeTransition"];
+    [transitionFilter setDefaults];
+    
+    [transitionFilter setValue:initialCIImage forKey:@"inputImage"];
+    [transitionFilter setValue:finalCIImage forKey:@"inputTargetImage"];
 }
 
 - (void)selectTabViewItem:(NSTabViewItem *)tabViewItem 
@@ -148,7 +148,7 @@ static void ClearBitmapImageRep(NSBitmapImageRep *bitmap)
 // and advance our Core Image transition effect to the next time slice.
 - (void)setCurrentProgress:(NSAnimationProgress)progress 
 {
-	[super setCurrentProgress:progress];
-	[(id)[self delegate] display];
+    [super setCurrentProgress:progress];
+    [(id)[self delegate] display];
 }
 @end

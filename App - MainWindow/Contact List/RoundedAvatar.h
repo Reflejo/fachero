@@ -18,5 +18,6 @@
 
 -(void)setOnline;
 -(void)setOffline;
+-(void)setAvatar:(NSImage *)picture;
 
 @end

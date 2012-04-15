@@ -15,27 +15,20 @@
  * limitations under the License.
  */
 
-@class XMPPStream;
-@class XMPPMessage;
-@class XMPPJID;
+#import "NSImage+Section.h"
 
-@interface ChatController : NSWindowController
+@implementation NSImage (ImageSection)
+
++ (NSImage *)imageWithRect:(NSRect)rect ofImage:(NSImage *)original;
 {
-    __strong XMPPStream *xmppStream;
-    __strong XMPPJID *jid;
-    __strong XMPPMessage *firstMessage;
+    NSPoint zero = { 0.0, 0.0 };
+    NSImage *result = [[self alloc] initWithSize:rect.size];
     
-    IBOutlet id messageField;
-    IBOutlet id messageView;
-    IBOutlet NSScrollView *containerView;
+    [result lockFocus];
+    [original compositeToPoint:zero fromRect:rect 
+                     operation:NSCompositeCopy];
+    [result unlockFocus];
+    return result;
 }
-
-- (id)initWithStream:(XMPPStream *)xmppStream jid:(XMPPJID *)jid;
-- (id)initWithStream:(XMPPStream *)xmppStream jid:(XMPPJID *)jid message:(XMPPMessage *)message;
-
-@property (nonatomic, readonly) XMPPStream *xmppStream;
-@property (nonatomic, readonly) XMPPJID *jid;
-
-- (IBAction)sendMessage:(id)sender;
 
 @end

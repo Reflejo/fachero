@@ -31,27 +31,27 @@
 
 - (id)init
 {
-	if ((self = [super init]))
-	{
-		// Configure logging framework
-		[DDLog addLogger:[DDTTYLogger sharedInstance]];
-		
-		// Initialize variables
-		xmppStream = [[XMPPStream alloc] init];
-	//	xmppReconnect = [[XMPPReconnect alloc] init];
-		
-		xmppRosterStorage = [[XMPPRosterMemoryStorage alloc] init];
-		xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:xmppRosterStorage];
-		
-	//	xmppCapabilitiesStorage = [[XMPPCapabilitiesCoreDataStorage alloc] init];
-	//	xmppCapabilities = [[XMPPCapabilities alloc] initWithCapabilitiesStorage:xmppCapabilitiesStorage];
-		
-	//	xmppCapabilities.autoFetchHashedCapabilities = YES;
-	//	xmppCapabilities.autoFetchNonHashedCapabilities = NO;
-		
-	//	xmppPing = [[XMPPPing alloc] init];
-	//	xmppTime = [[XMPPTime alloc] init];
-		
+    if ((self = [super init]))
+    {
+        // Configure logging framework
+        [DDLog addLogger:[DDTTYLogger sharedInstance]];
+        
+        // Initialize variables
+        xmppStream = [[XMPPStream alloc] init];
+        //    xmppReconnect = [[XMPPReconnect alloc] init];
+        
+        xmppRosterStorage = [[XMPPRosterMemoryStorage alloc] init];
+        xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:xmppRosterStorage];
+        
+        //    xmppCapabilitiesStorage = [[XMPPCapabilitiesCoreDataStorage alloc] init];
+        //    xmppCapabilities = [[XMPPCapabilities alloc] initWithCapabilitiesStorage:xmppCapabilitiesStorage];
+        
+        //    xmppCapabilities.autoFetchHashedCapabilities = YES;
+        //    xmppCapabilities.autoFetchNonHashedCapabilities = NO;
+        
+        //    xmppPing = [[XMPPPing alloc] init];
+        //    xmppTime = [[XMPPTime alloc] init];
+        
         // Setup vCard support
         // 
         // The vCard Avatar module works in conjuction with the standard vCard Temp module to download user avatars.
@@ -59,44 +59,44 @@
         xmppvCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
         xmppvCardTempModule = [[XMPPvCardTempModule alloc] initWithvCardStorage:xmppvCardStorage];
         xmppvCardAvatarModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:xmppvCardTempModule];
-
-		turnSockets = [[NSMutableArray alloc] init];
-	}
-
-	return self;
+        
+        turnSockets = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	DDLogInfo(@"%@: %@", THIS_FILE, THIS_METHOD);
+    DDLogInfo(@"%@: %@", THIS_FILE, THIS_METHOD);
     [window setBarWithInitColor:kMainWindowGradientInit 
                        endColor:kMainWindowGradientEnd];
-
-	[xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
-	
-	// Activate xmpp modules
-	[xmppReconnect activate:xmppStream];
-	[xmppRoster activate:xmppStream];
-	[xmppCapabilities activate:xmppStream];
-	[xmppPing activate:xmppStream];
-	[xmppTime activate:xmppStream];
-	[xmppvCardTempModule   activate:xmppStream];
+    
+    [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+    // Activate xmpp modules
+    [xmppReconnect activate:xmppStream];
+    [xmppRoster activate:xmppStream];
+    [xmppCapabilities activate:xmppStream];
+    [xmppPing activate:xmppStream];
+    [xmppTime activate:xmppStream];
+    [xmppvCardTempModule   activate:xmppStream];
     [xmppvCardAvatarModule activate:xmppStream];
-
-	// Add ourself as a delegate to anything we may be interested in
+    
+    // Add ourself as a delegate to anything we may be interested in
     xmppCapabilities.autoFetchHashedCapabilities = YES;
     xmppCapabilities.autoFetchNonHashedCapabilities = NO;
-
-//	[xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
-	[xmppReconnect addDelegate:self delegateQueue:dispatch_get_main_queue()];
-	[xmppvCardAvatarModule addDelegate:self delegateQueue:dispatch_get_main_queue()];
-	[xmppvCardTempModule addDelegate:self delegateQueue:dispatch_get_main_queue()];
-	[xmppCapabilities addDelegate:self delegateQueue:dispatch_get_main_queue()];
-	[xmppPing addDelegate:self delegateQueue:dispatch_get_main_queue()];
-	[xmppTime addDelegate:self delegateQueue:dispatch_get_main_queue()];
     
-	// Start the GUI stuff
-	[rosterController displaySignInSheet];
+    //    [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [xmppReconnect addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [xmppvCardAvatarModule addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [xmppvCardTempModule addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [xmppCapabilities addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [xmppPing addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [xmppTime addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+    // Start the GUI stuff
+    [rosterController displaySignInSheet];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,8 +105,8 @@
 
 - (BOOL)xmppReconnect:(XMPPReconnect *)sender shouldAttemptAutoReconnect:(SCNetworkReachabilityFlags)reachabilityFlags
 {
-	DDLogVerbose(@"---------- xmppReconnect:shouldAttemptAutoReconnect: ----------");
-	return YES;
+    DDLogVerbose(@"---------- xmppReconnect:shouldAttemptAutoReconnect: ----------");
+    return YES;
 }
 
 @end

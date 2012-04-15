@@ -22,21 +22,21 @@
 
 - (void)awakeFromNib
 {
-	NSDictionary *colorDict = [NSDictionary dictionaryWithObject:NSColorFromRGB(0xb9b9b9)
-														  forKey:NSForegroundColorAttributeName];
-	
-	NSAttributedString *asUserName, *asPassword;
-	asUserName = [[NSAttributedString alloc] initWithString:[[username cell] placeholderString]
-												 attributes:colorDict];
-	asPassword = [[NSAttributedString alloc] initWithString:[[password cell] placeholderString]
-												 attributes:colorDict];
+    NSDictionary *colorDict = [NSDictionary dictionaryWithObject:NSColorFromRGB(0xb9b9b9)
+                                                          forKey:NSForegroundColorAttributeName];
+    
+    NSAttributedString *asUserName, *asPassword;
+    asUserName = [[NSAttributedString alloc] initWithString:[[username cell] placeholderString]
+                                                 attributes:colorDict];
+    asPassword = [[NSAttributedString alloc] initWithString:[[password cell] placeholderString]
+                                                 attributes:colorDict];
 
-	[[username cell] setPlaceholderAttributedString:asUserName];
-	[[password cell] setPlaceholderAttributedString:asPassword];
-	
-	CustomWindow *window = (CustomWindow *)[self window];
-	[window setToolbarHidden:YES];
-//	[window setContentSize:NSMakeSize([window frame].size.width, kLoginWindowHeight)];
+    [[username cell] setPlaceholderAttributedString:asUserName];
+    [[password cell] setPlaceholderAttributedString:asPassword];
+    
+    CustomWindow *window = (CustomWindow *)[self window];
+    [window setToolbarHidden:YES];
+//    [window setContentSize:NSMakeSize([window frame].size.width, kLoginWindowHeight)];
 }
 
 - (void)drawRect:(NSRect)dirtyRect 
