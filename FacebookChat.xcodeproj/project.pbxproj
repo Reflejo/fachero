@@ -50,7 +50,9 @@
 		4BE0A1BF153A91210030E26B /* NSImage+Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0A1BE153A91210030E26B /* NSImage+Section.m */; };
 		4BE0A1C2153A948A0030E26B /* fromBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1C0153A94890030E26B /* fromBubble.png */; };
 		4BE0A1C3153A948A0030E26B /* toBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1C1153A94890030E26B /* toBubble.png */; };
-		4BE0A1C7153AA2E00030E26B /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0A1C6153AA2E00030E26B /* MessageView.m */; };
+		4BE0A1C9153BCF9E0030E26B /* FaceChat.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1C8153BCF9D0030E26B /* FaceChat.icns */; };
+		4BE0A1CC153BD4820030E26B /* MessageTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0A1CB153BD4820030E26B /* MessageTableCellView.m */; };
+		4BE0A1CE153BF1890030E26B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE0A1CD153BF1880030E26B /* WebKit.framework */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -213,8 +215,10 @@
 		4BE0A1BE153A91210030E26B /* NSImage+Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Section.m"; sourceTree = "<group>"; usesTabs = 0; };
 		4BE0A1C0153A94890030E26B /* fromBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fromBubble.png; sourceTree = "<group>"; };
 		4BE0A1C1153A94890030E26B /* toBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toBubble.png; sourceTree = "<group>"; };
-		4BE0A1C5153AA2E00030E26B /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
-		4BE0A1C6153AA2E00030E26B /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
+		4BE0A1C8153BCF9D0030E26B /* FaceChat.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = FaceChat.icns; path = ../../FaceChat.icns; sourceTree = "<group>"; };
+		4BE0A1CA153BD4820030E26B /* MessageTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableCellView.h; sourceTree = "<group>"; usesTabs = 0; };
+		4BE0A1CB153BD4820030E26B /* MessageTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableCellView.m; sourceTree = "<group>"; usesTabs = 0; };
+		4BE0A1CD153BF1880030E26B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* FacebookChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacebookChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0AC2771346E20800D053E3 /* XMPPvCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPPvCard.xcdatamodel; sourceTree = "<group>"; };
@@ -410,6 +414,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE0A1CE153BF1890030E26B /* WebKit.framework in Frameworks */,
 				4BE0A1B015395BEB0030E26B /* QuartzCore.framework in Frameworks */,
 				DCFE9FA513413C4E007C5391 /* CoreLocation.framework in Frameworks */,
 				DCFE9FA113413B5A007C5391 /* libidn.a in Frameworks */,
@@ -472,6 +477,7 @@
 		29B97314FDCFA39411CA2CEA /* XMPPStream */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0A1CD153BF1880030E26B /* WebKit.framework */,
 				DCCE55760BDC8EC8000E2798 /* XMPP */,
 				DC34A2671486BD86004F0A03 /* SSKeychain */,
 				DCEC5E55115CF48B00CAA66F /* App - General */,
@@ -566,6 +572,7 @@
 		4B10E17C153938F200616AC4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0A1C8153BCF9D0030E26B /* FaceChat.icns */,
 				4BE0A1C0153A94890030E26B /* fromBubble.png */,
 				4BE0A1C1153A94890030E26B /* toBubble.png */,
 				4BE0A1B4153A3CD90030E26B /* selectedIndicator.png */,
@@ -600,8 +607,8 @@
 				4BE0A1BE153A91210030E26B /* NSImage+Section.m */,
 				4BE0A1BA153A8DB40030E26B /* BubbleTextView.h */,
 				4BE0A1BB153A8DB50030E26B /* BubbleTextView.m */,
-				4BE0A1C5153AA2E00030E26B /* MessageView.h */,
-				4BE0A1C6153AA2E00030E26B /* MessageView.m */,
+				4BE0A1CA153BD4820030E26B /* MessageTableCellView.h */,
+				4BE0A1CB153BD4820030E26B /* MessageTableCellView.m */,
 			);
 			name = "Message View";
 			sourceTree = "<group>";
@@ -1202,6 +1209,7 @@
 				4BE0A1B5153A3CD90030E26B /* selectedIndicator.png in Resources */,
 				4BE0A1C2153A948A0030E26B /* fromBubble.png in Resources */,
 				4BE0A1C3153A948A0030E26B /* toBubble.png in Resources */,
+				4BE0A1C9153BCF9E0030E26B /* FaceChat.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1310,7 +1318,7 @@
 				4BE0A1A815394DBD0030E26B /* LoginView.m in Sources */,
 				4BE0A1BC153A8DB50030E26B /* BubbleTextView.m in Sources */,
 				4BE0A1BF153A91210030E26B /* NSImage+Section.m in Sources */,
-				4BE0A1C7153AA2E00030E26B /* MessageView.m in Sources */,
+				4BE0A1CC153BD4820030E26B /* MessageTableCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

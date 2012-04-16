@@ -198,18 +198,16 @@
     }
     else
     {
-        AppDelegate *delegate = [[NSApplication sharedApplication] delegate];
+        AppDelegate *delegate = [NSApp delegate];
         
         NSData *photoData = [[delegate xmppvCardAvatarModule] photoDataForJID:user.jid];
         
         if (photoData != nil)
-            [avatar setPicture:[[NSImage alloc] initWithData:photoData]];
+            [avatar setAvatar:[[NSImage alloc] initWithData:photoData]];
     }
     
     if (user.isOnline) [avatar setOnline];
     else [avatar setOffline];
-    
-    [avatar setNeedsDisplay:YES];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

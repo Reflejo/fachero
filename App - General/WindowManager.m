@@ -93,6 +93,7 @@ static NSMutableArray *chatControllers;
     {
         // Create new chat window
         XMPPJID *jid = [message from];
+        NSLog(@"%@ -------------------", [[message from] user]);
         
         chatController = [[ChatController alloc] initWithStream:xmppStream jid:jid message:message];
         [chatController showWindow:self];

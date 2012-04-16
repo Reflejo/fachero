@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+#import <WebKit/WebKit.h>
+
 @class XMPPStream;
 @class XMPPMessage;
 @class XMPPJID;
@@ -24,10 +26,15 @@
     __strong XMPPStream *xmppStream;
     __strong XMPPJID *jid;
     __strong XMPPMessage *firstMessage;
-    
+    NSMutableArray *messages;
+
     IBOutlet id messageField;
-    IBOutlet id messageView;
-    IBOutlet NSScrollView *containerView;
+//    IBOutlet id messageView;
+    IBOutlet NSScrollView *scrollView;
+    IBOutlet NSTableView *tableView;
+
+
+    IBOutlet WebView *webView;
 }
 
 - (id)initWithStream:(XMPPStream *)xmppStream jid:(XMPPJID *)jid;

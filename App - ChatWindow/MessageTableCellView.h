@@ -15,18 +15,16 @@
  * limitations under the License.
  */
 
-typedef enum _BubbleStyles {
-	kBubbleFrom  = 1,
-	kBubbleTo = 2
-} BubbleStyles;
+#import "BubbleTextView.h"
+#import "RoundedAvatar.h"
 
-
-@interface BubbleTextView : NSTextView {
-    NSArray *fromParts;
-    NSArray *toParts;
-    BubbleStyles style;
+@interface MessageTableCellView : NSTableCellView {
+    IBOutlet BubbleTextView *bubbleView;
+    IBOutlet RoundedAvatar *avatar;
 }
 
-@property (nonatomic) BubbleStyles style;
+@property (readonly) BubbleTextView *bubbleView;
+@property (readonly) RoundedAvatar *avatar;
+
 
 @end

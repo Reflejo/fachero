@@ -18,7 +18,9 @@
 #import "ChatController.h"
 #import "WindowManager.h"
 #import "XMPPFramework.h"
-#import "MessageView.h"
+#import "MessageTableCellView.h"
+#import "XMPPRosterMemoryStorage.h"
+#import "AppDelegate.h"
 
 @interface ChatController (PrivateAPI)
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message;
@@ -33,6 +35,11 @@
 @synthesize xmppStream;
 @synthesize jid;
 
+- (XMPPRosterMemoryStorage *)storage
+{
+    return [[NSApp delegate] xmppRosterStorage];
+}
+
 - (id)initWithStream:(XMPPStream *)stream jid:(XMPPJID *)aJid
 {
     return [self initWithStream:stream jid:aJid message:nil];
@@ -42,29 +49,26 @@
 {
     if ((self = [super initWithWindowNibName:@"ChatWindow"]))
     {
+        messages = [NSMutableArray array];
         xmppStream = stream;
         jid = aJid;
         
         firstMessage = message;
+        [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+        [[self window] setTitle:[[self storage] userForJID:aJid].nickname];
+        [[self window] makeFirstResponder:messageField];
+        [[[self window] standardWindowButton:NSWindowMiniaturizeButton]setHidden:YES];
+        [[[self window] standardWindowButton:NSWindowZoomButton] setHidden:YES];
+        [[self window] setBackgroundColor:NSColorFromRGB(0xf6f6fa)];
     }
     return self;
 }
 
 - (void)awakeFromNib
 {
-    NSSize containerSize = [containerView frame].size;
-    MessageView *message = [[MessageView alloc] initWithFrame:NSMakeRect(0, 0, containerSize.width, 100) 
-                                                      message:@"SDIJDISAJD ASDJASIDJ ASDJ AS"
-                                                       avatar:nil
-                                                        style:kBubbleFrom];
-    [containerView addSubview:message];
+    [[webView mainFrame] loadHTMLString:@"<html><body>oasdjiasj||||||||ASodASKDOSdiasjdiasd</body></html>" 
+                                baseURL:[NSURL URLWithString:@"http://127.0.0.1/"]];
 
-    [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
-    [messageView setString:@""];
-    
-    [[self window] setTitle:[jid full]];
-    [[self window] makeFirstResponder:messageField];
-    
     if (firstMessage)
     {
         [self xmppStream:xmppStream didReceiveMessage:firstMessage];
@@ -72,12 +76,13 @@
     }
 }
 
+
 /**
  * Called immediately before the window closes.
  * 
  * This method's job is to release the WindowController (self)
  * This is so that the nib file is released from memory.
-**/
+ **/
 - (void)windowWillClose:(NSNotification *)aNotification
 {
     DDLogVerbose(@"ChatController: windowWillClose");
@@ -88,7 +93,6 @@
 
 - (void)scrollToBottom
 {
-    NSScrollView *scrollView = [messageView enclosingScrollView];
     NSPoint newScrollOrigin;
     
     if ([[scrollView documentView] isFlipped])
@@ -99,6 +103,67 @@
     [[scrollView documentView] scrollPoint:newScrollOrigin];
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Roster Table Data Source
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (int)numberOfRowsInTableView:(NSTableView *)tableView
+{
+    return [messages count];
+}
+
+/**
+ * This selector is called when a user select some option. Do not allow selections.
+ */
+- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
+{
+    return NO;
+}
+
+/**
+ * This delegate function will return the rowView that we'll add into
+ * tableView. Name and photo is setted here.
+ */
+- (NSView *)tableView:(NSTableView *)aTableView viewForTableColumn:(NSTableColumn *)tableColumn 
+                  row:(NSInteger)row
+{
+    MessageTableCellView *view;
+    XMPPMessage *message = [messages objectAtIndex:row];
+    NSString *messageStr = [[message elementForName:@"body"] stringValue];
+    AppDelegate *delegate = (AppDelegate *)[NSApp delegate];
+    XMPPJID *myJID = [[delegate xmppStream] myJID];
+    XMPPJID *userJID = [message from] ? [message from]: myJID;
+    NSData *photoData = [[delegate xmppvCardAvatarModule] photoDataForJID:userJID];
+
+    if ([userJID isEqualToJID:myJID])
+    {
+        view = [aTableView makeViewWithIdentifier:@"messageFrom" owner:self];
+        [[view bubbleView] setStyle:kBubbleFrom];
+    }
+    else
+    {
+        view = [aTableView makeViewWithIdentifier:@"messageTo" owner:self];
+        [[view bubbleView] setStyle:kBubbleTo];
+    }
+
+    [[view avatar] setAvatar:[[NSImage alloc] initWithData:photoData]];
+    [[view bubbleView] setString:messageStr];
+    return view;
+}
+
+/**
+ * Do not allow editing.
+ */
+- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn 
+              row:(NSInteger)rowIndex
+{
+    return NO;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark XMPP Events
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
 {
     [messageField setEnabled:YES];
@@ -107,10 +172,11 @@
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
 {
     if(![jid isEqual:[message from]]) return;
+    NSLog(@"ASDOASDKASO JID!!!!!!!!!!!!!!!!!! %@", [message from]);
     
     if([message isChatMessageWithBody])
     {
-        NSString *messageStr = [[message elementForName:@"body"] stringValue];
+        /*NSString *messageStr = [[message elementForName:@"body"] stringValue];
         
         NSString *paragraph = [NSString stringWithFormat:@"%@\n\n", messageStr];
         
@@ -123,7 +189,10 @@
         
         NSAttributedString *as = [[NSAttributedString alloc] initWithString:paragraph attributes:attributes];
         
-        [[messageView textStorage] appendAttributedString:as];
+        [[messageView textStorage] appendAttributedString:as];*/
+        [messages addObject:message];
+        [tableView reloadData];
+        [self scrollToBottom];
     }
 }
 
@@ -147,7 +216,7 @@
         [message addChild:body];
         
         [xmppStream sendElement:message];
-        
+        /*
         NSString *paragraph = [NSString stringWithFormat:@"%@\n\n", messageStr];
         
         NSMutableParagraphStyle *mps = [[NSMutableParagraphStyle alloc] init];
@@ -158,12 +227,14 @@
         
         NSAttributedString *as = [[NSAttributedString alloc] initWithString:paragraph attributes:attributes];
         
-        [[messageView textStorage] appendAttributedString:as];
-        
-        [self scrollToBottom];
-        
+        [[messageView textStorage] appendAttributedString:as];*/
+        [messages addObject:[XMPPMessage messageFromElement:message]];
+
+        [tableView reloadData];
+
         [messageField setStringValue:@""];
         [[self window] makeFirstResponder:messageField];
+        [self scrollToBottom];
     }
 }
 

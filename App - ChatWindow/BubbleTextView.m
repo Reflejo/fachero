@@ -27,31 +27,26 @@
 
 @implementation BubbleTextView
 
-- (id)initWithFrame:(NSRect)rect style:(BubbleStyles)style
-{
-    self = [super initWithFrame:rect];
-    if (self) 
-    {
-        if (style == kBubbleFrom)
-            bubbleParts = [self balloonTileArray:[NSImage imageNamed:@"fromBubble"]];
-        else
-            bubbleParts = [self balloonTileArray:[NSImage imageNamed:@"toBubble"]];
+@synthesize style;
 
-        // Set the paragraph style for messages in the bubble
-        /*    NSMutableParagraphStyle *messageStyle = [[NSParagraphStyle
-         defaultParagraphStyle] mutableCopy];
-         [messageStyle setParagraphSpacingBefore:kBalloonTop];
-         [messageStyle setParagraphSpacing:kBalloonBottom];
-         [self setDefaultParagraphStyle:messageStyle];
-         [self setTypingAttributes:[NSDictionary
-         dictionaryWithObjectsAndKeys:
-         messageStyle, NSParagraphStyleAttributeName, 
-         [NSFont userFontOfSize:13.0], NSFontAttributeName, nil]];
-         */    
-        [self setTextContainerInset:NSMakeSize(kBalloonTop, kBalloonTop)];
+- (id)initWithFrame:(NSRect)frameRect
+{
+    self = [super initWithFrame:frameRect];
+    if (self)
+    {
+        fromParts = [self balloonTileArray:[NSImage imageNamed:@"fromBubble"]];
+        toParts = [self balloonTileArray:[NSImage imageNamed:@"toBubble"]];
+        style = kBubbleFrom;    
+        [self setDrawsBackground:NO];
+        [self setEditable:NO];
     }
-    
     return self;
+    
+}
+
+-(void)awakeFromNib
+{
+    [self setTextContainerInset:NSMakeSize(kBalloonTop, kBalloonTop)];
 }
 
 ///////////////////////////////////////////////////////////
@@ -102,9 +97,11 @@
 
 - (void)drawViewBackgroundInRect:(NSRect)rect 
 {
+    NSArray *bubbleParts = (style == kBubbleFrom) ? fromParts: toParts;
+
     // Draw the background first, before the bubbles.
     [super drawViewBackgroundInRect:rect];
-    NSDrawNinePartImage([self bounds], 
+    NSDrawNinePartImage([self bounds],
                         [bubbleParts objectAtIndex:0],
                         [bubbleParts objectAtIndex:1],
                         [bubbleParts objectAtIndex:2],
@@ -114,8 +111,7 @@
                         [bubbleParts objectAtIndex:6],
                         [bubbleParts objectAtIndex:7],
                         [bubbleParts objectAtIndex:8], 
-                        NSCompositeSourceOver, 1.0, YES);       
-
+                        NSCompositeSourceOver, 1.0, YES);
 }
 
 @end

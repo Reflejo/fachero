@@ -15,15 +15,10 @@
  * limitations under the License.
  */
 
-#import "BubbleTextView.h"
-#import "RoundedAvatar.h"
+#import "MessageTableCellView.h"
 
-@interface MessageView : NSView {
-	BubbleTextView *bubble;
-	RoundedAvatar *avatarView;
-}
+@implementation MessageTableCellView
 
--(id)initWithFrame:(NSRect)frame message:(NSString *)message avatar:(NSImage *)avatar 
-			 style:(BubbleStyles)style;
+@synthesize avatar, bubbleView;
 
 @end
