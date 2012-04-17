@@ -1,6 +1,6 @@
 /*
  * Author: Mart’n Conte Mac Donell <Reflejo@gmail.com>
- * Design: Federico Abad <abadfederico@gmail.com?
+ * Design: Federico Abad <abadfederico@gmail.com>
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this work except in compliance with the License.
