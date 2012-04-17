@@ -23,9 +23,10 @@
 
 // Custom Functions
 #define NSColorFromRGB(rgbValue) [NSColor \
-    colorWithCalibratedRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-                     green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
-                      blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+    colorWithCalibratedRed:(((rgbValue & 0xFF0000) >> 16) / 255.0f) \
+                     green:(((rgbValue & 0x00FF00) >> 8) / 255.0f) \
+                      blue:((rgbValue & 0x0000FF) / 255.0f) \
+                     alpha:1.0]
 
 
 //#undef DEBUG
@@ -33,16 +34,9 @@
 // Log levels: off, error, warn, info, verbose
 static const int ddLogLevel = LOG_LEVEL_OFF;
 
-/*
-#define kBalloonHeight              46.0
-#define kBalloonWidth               77.0
-#define kBalloonTail                19.0
-#define kBalloonEnd                 10.0
-#define kBalloonBottom              14.0
-#define kBalloonTop                 9.0
-*/
 #define kMainWindowGradientInit     NSColorFromRGB(0x385f96)
 #define kMainWindowGradientEnd      NSColorFromRGB(0x2f5288)
+#define kChatWindowBackground       NSColorFromRGB(0xf6f6fa)
 #define kLoginWindowHeight          370.0
 
 #define kNumberOfShakes             4

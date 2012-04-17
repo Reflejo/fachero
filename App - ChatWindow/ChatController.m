@@ -18,9 +18,8 @@
 #import "ChatController.h"
 #import "WindowManager.h"
 #import "XMPPFramework.h"
-#import "MessageTableCellView.h"
-#import "XMPPRosterMemoryStorage.h"
 #import "AppDelegate.h"
+#import "StyleManager.h"
 
 @interface ChatController (PrivateAPI)
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message;
@@ -35,11 +34,18 @@
 @synthesize xmppStream;
 @synthesize jid;
 
+/**
+ * XMPP Roaster storage, We'll find users and avatars here
+ */
 - (XMPPRosterMemoryStorage *)storage
 {
     return [[NSApp delegate] xmppRosterStorage];
 }
 
+/**
+ * Initialization objects message is there because an user could start chatting
+ * to us and his/her window could be closed.
+ */
 - (id)initWithStream:(XMPPStream *)stream jid:(XMPPJID *)aJid
 {
     return [self initWithStream:stream jid:aJid message:nil];
@@ -49,25 +55,33 @@
 {
     if ((self = [super initWithWindowNibName:@"ChatWindow"]))
     {
-        messages = [NSMutableArray array];
         xmppStream = stream;
         jid = aJid;
-        
+
         firstMessage = message;
         [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+
+        // Set window title to our contact nickname
         [[self window] setTitle:[[self storage] userForJID:aJid].nickname];
+
+        // Window Customization (remove minimize/zoom butons and set window background)
         [[self window] makeFirstResponder:messageField];
         [[[self window] standardWindowButton:NSWindowMiniaturizeButton]setHidden:YES];
         [[[self window] standardWindowButton:NSWindowZoomButton] setHidden:YES];
-        [[self window] setBackgroundColor:NSColorFromRGB(0xf6f6fa)];
     }
+
     return self;
 }
 
+/**
+ * Restart Chat HTML template content and see if we need to show an initial message
+ */
 - (void)awakeFromNib
 {
-    [[webView mainFrame] loadHTMLString:@"<html><body>oasdjiasj||||||||ASodASKDOSdiasjdiasd</body></html>" 
-                                baseURL:[NSURL URLWithString:@"http://127.0.0.1/"]];
+    AppDelegate *delegate = [NSApp delegate];
+    [[self window] setBackgroundColor:[[delegate styleManager] backgroundColor]];
+    [[webView mainFrame] loadHTMLString:[[delegate styleManager] indexTemplate]
+                                baseURL:nil];
 
     if (firstMessage)
     {
@@ -75,7 +89,6 @@
         firstMessage  = nil;
     }
 }
-
 
 /**
  * Called immediately before the window closes.
@@ -93,77 +106,64 @@
 
 - (void)scrollToBottom
 {
-    NSPoint newScrollOrigin;
-    
-    if ([[scrollView documentView] isFlipped])
-        newScrollOrigin = NSMakePoint(0.0F, NSMaxY([[scrollView documentView] frame]));
-    else
-        newScrollOrigin = NSMakePoint(0.0F, 0.0F);
-    
-    [[scrollView documentView] scrollPoint:newScrollOrigin];
+    [webView stringByEvaluatingJavaScriptFromString:@"scrollIfNeeded();"];
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark Roster Table Data Source
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (int)numberOfRowsInTableView:(NSTableView *)tableView
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Chat Messages HTML crafting
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)addMessage:(XMPPMessage *)message
 {
-    return [messages count];
-}
-
-/**
- * This selector is called when a user select some option. Do not allow selections.
- */
-- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
-{
-    return NO;
-}
-
-/**
- * This delegate function will return the rowView that we'll add into
- * tableView. Name and photo is setted here.
- */
-- (NSView *)tableView:(NSTableView *)aTableView viewForTableColumn:(NSTableColumn *)tableColumn 
-                  row:(NSInteger)row
-{
-    MessageTableCellView *view;
-    XMPPMessage *message = [messages objectAtIndex:row];
-    NSString *messageStr = [[message elementForName:@"body"] stringValue];
-    AppDelegate *delegate = (AppDelegate *)[NSApp delegate];
-    XMPPJID *myJID = [[delegate xmppStream] myJID];
-    XMPPJID *userJID = [message from] ? [message from]: myJID;
-    NSData *photoData = [[delegate xmppvCardAvatarModule] photoDataForJID:userJID];
-
-    if ([userJID isEqualToJID:myJID])
+    if (!webViewIsReady)
     {
-        view = [aTableView makeViewWithIdentifier:@"messageFrom" owner:self];
-        [[view bubbleView] setStyle:kBubbleFrom];
+        [self performSelector:@selector(addMessage:)
+				   withObject:message
+				   afterDelay:0];
+        return;
     }
-    else
-    {
-        view = [aTableView makeViewWithIdentifier:@"messageTo" owner:self];
-        [[view bubbleView] setStyle:kBubbleTo];
-    }
-
-    [[view avatar] setAvatar:[[NSImage alloc] initWithData:photoData]];
-    [[view bubbleView] setString:messageStr];
-    return view;
+    AppDelegate *delegate = [NSApp delegate];
+    [[delegate styleManager] addMessageToView:webView message:message];
 }
 
-/**
- * Do not allow editing.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Webview delegates
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+ * Invoked once the webview has loaded and is ready to accept content
  */
-- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn 
-              row:(NSInteger)rowIndex
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
-    return NO;
+    webViewIsReady = YES;
 }
 
+/*
+ * Prevent the webview from following external links.  We direct these to the user's web browser.
+ */
+- (void)webView:(WebView *)sender decidePolicyForNavigationAction:(NSDictionary *)actionInformation
+		request:(NSURLRequest *)request
+		  frame:(WebFrame *)frame decisionListener:(id<WebPolicyDecisionListener>)listener
+{
+    NSInteger actionKey = [[actionInformation objectForKey:WebActionNavigationTypeKey] integerValue];
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    if (actionKey == WebNavigationTypeOther)
+		[listener use];
+    else
+        [listener ignore];
+}
+
+/*
+ * Append our own menu items to the webview's contextual menus
+ */
+- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element 
+	defaultMenuItems:(NSArray *)defaultMenuItems
+{
+	return nil;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPP Events
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
 {
     [messageField setEnabled:YES];
@@ -171,27 +171,11 @@
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
 {
-    if(![jid isEqual:[message from]]) return;
-    NSLog(@"ASDOASDKASO JID!!!!!!!!!!!!!!!!!! %@", [message from]);
+    if (![jid isEqual:[message from]]) return;
     
     if([message isChatMessageWithBody])
     {
-        /*NSString *messageStr = [[message elementForName:@"body"] stringValue];
-        
-        NSString *paragraph = [NSString stringWithFormat:@"%@\n\n", messageStr];
-        
-        NSMutableParagraphStyle *mps = [[NSMutableParagraphStyle alloc] init];
-        [mps setAlignment:NSLeftTextAlignment];
-        
-        NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithCapacity:2];
-        [attributes setObject:mps forKey:NSParagraphStyleAttributeName];
-        [attributes setObject:[NSColor colorWithCalibratedRed:250 green:250 blue:250 alpha:1] forKey:NSBackgroundColorAttributeName];
-        
-        NSAttributedString *as = [[NSAttributedString alloc] initWithString:paragraph attributes:attributes];
-        
-        [[messageView textStorage] appendAttributedString:as];*/
-        [messages addObject:message];
-        [tableView reloadData];
+        [self addMessage:message];
         [self scrollToBottom];
     }
 }
@@ -213,24 +197,11 @@
         NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
         [message addAttributeWithName:@"type" stringValue:@"chat"];
         [message addAttributeWithName:@"to" stringValue:[jid full]];
+        [message addAttributeWithName:@"from" stringValue:[[xmppStream myJID] full]];
         [message addChild:body];
         
         [xmppStream sendElement:message];
-        /*
-        NSString *paragraph = [NSString stringWithFormat:@"%@\n\n", messageStr];
-        
-        NSMutableParagraphStyle *mps = [[NSMutableParagraphStyle alloc] init];
-        [mps setAlignment:NSRightTextAlignment];
-        
-        NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithCapacity:2];
-        [attributes setObject:mps forKey:NSParagraphStyleAttributeName];
-        
-        NSAttributedString *as = [[NSAttributedString alloc] initWithString:paragraph attributes:attributes];
-        
-        [[messageView textStorage] appendAttributedString:as];*/
-        [messages addObject:[XMPPMessage messageFromElement:message]];
-
-        [tableView reloadData];
+        [self addMessage:[XMPPMessage messageFromElement:message]];
 
         [messageField setStringValue:@""];
         [[self window] makeFirstResponder:messageField];

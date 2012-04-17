@@ -19,6 +19,7 @@
 #import "WindowManager.h"
 #import "AppDelegate.h"
 #import "SSKeychain.h"
+#import "CustomWindow.h"
 
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <QuartzCore/CoreAnimation.h>
@@ -377,8 +378,12 @@
     
     if (!roster)
     {
+        NSString *user = [[[sender myUser] displayName] 
+                          stringByReplacingOccurrencesOfString:@"@chat.facebook.com"
+                          withString:@""];
+
         [self configurePhotoForAvatar:userAvatar user:[sender myUser]];
-        [userName setStringValue:[[sender myUser] displayName]];
+        [userName setStringValue:[user capitalizedString]];
     }
     roster = [sender sortedUsersByAvailabilityName];
     

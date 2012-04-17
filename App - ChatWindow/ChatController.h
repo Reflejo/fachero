@@ -17,23 +17,20 @@
 
 #import <WebKit/WebKit.h>
 
+@class StyleManager;
 @class XMPPStream;
 @class XMPPMessage;
 @class XMPPJID;
 
 @interface ChatController : NSWindowController
 {
+    BOOL webViewIsReady;
+
     __strong XMPPStream *xmppStream;
     __strong XMPPJID *jid;
     __strong XMPPMessage *firstMessage;
-    NSMutableArray *messages;
 
-    IBOutlet id messageField;
-//    IBOutlet id messageView;
-    IBOutlet NSScrollView *scrollView;
-    IBOutlet NSTableView *tableView;
-
-
+    IBOutlet NSTextField *messageField;
     IBOutlet WebView *webView;
 }
 

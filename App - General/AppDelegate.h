@@ -15,10 +15,11 @@
  * limitations under the License.
  */
 
-#import "CustomWindow.h"
 #import "XMPPFramework.h"
 
 @class RosterController;
+@class StyleManager;
+@class CustomWindow;
 
 @interface AppDelegate : NSObject
 {
@@ -34,12 +35,14 @@
     __strong XMPPvCardCoreDataStorage *xmppvCardStorage;
     __strong XMPPvCardTempModule *xmppvCardTempModule;
     __strong XMPPvCardAvatarModule *xmppvCardAvatarModule;
+    __strong StyleManager *styleManager;
     
     NSMutableArray *turnSockets;
     
     IBOutlet RosterController *rosterController;
     
     IBOutlet CustomWindow *window;
+    
 }
 
 @property (nonatomic, readonly) XMPPStream *xmppStream;
@@ -50,6 +53,7 @@
 @property (nonatomic, readonly) XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
 @property (nonatomic, readonly) XMPPvCardAvatarModule *xmppvCardAvatarModule;
 @property (nonatomic, readonly) XMPPPing *xmppPing;
+@property (nonatomic, readonly) StyleManager *styleManager;
 
 
 @end

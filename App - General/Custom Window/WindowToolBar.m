@@ -97,6 +97,12 @@ const CGFloat OSCornerClipRadius = 4.0;
         [self addSubview:titleLabel];
         
         [self addTrackingRect:NSMakeRect(0.0, 0.0, 68.0, 30.0) owner:self userData:nil assumeInside:NO];
+        
+        titleBackgrounds = [[NSArray alloc] initWithObjects:
+                            [NSImage imageNamed:@"titleBackgroundLeft"],
+                            [NSImage imageNamed:@"titleBackgroundMiddle"],
+                            [NSImage imageNamed:@"titleBackgroundRight"],nil];
+
     }
     
     return self;
@@ -112,24 +118,15 @@ const CGFloat OSCornerClipRadius = 4.0;
 
     if (buttonsHover) 
     {
-        if ([[self window] isDocumentEdited])
-            imageName = @"closedirty-rollover-color";
-        else
-            imageName = @"close-rollover-color";
+        imageName = @"close-rollover-color";
     } 
     else if ([[self window] isKeyWindow]) 
     {
-        if ([[self window] isDocumentEdited])
-            imageName = @"closedirty-active-color";
-        else
-            imageName = @"close-active-color";
+        imageName = @"close-active-color";
     } 
     else 
     {
-        if ([[self window] isDocumentEdited])
-            imageName = @"closedirty-activenokey-color";
-        else
-            imageName = @"close-activenokey-color";
+        imageName = @"activenokey-color";
     }
     
     [closeButton setImage:[NSImage imageNamed:imageName]];
@@ -140,7 +137,7 @@ const CGFloat OSCornerClipRadius = 4.0;
     else if (isKeyWindow)
         imageName = @"minimize-active-color";
     else
-        imageName = @"minimize-activenokey-color";
+        imageName = @"activenokey-color";
     
     [minimizeButton setImage:[NSImage imageNamed:imageName]];
     
@@ -150,7 +147,7 @@ const CGFloat OSCornerClipRadius = 4.0;
     else if (isKeyWindow)
         imageName = @"zoom-active-color";
     else
-        imageName = @"zoom-activenokey-color";
+        imageName = @"activenokey-color";
     
     [zoomButton setImage:[NSImage imageNamed:imageName]];
     
@@ -240,11 +237,11 @@ const CGFloat OSCornerClipRadius = 4.0;
  */
 - (void)drawRect:(NSRect)dirtyRect 
 {
-    [[self clippingPathWithRect:dirtyRect cornerRadius:OSCornerClipRadius] addClip];
+    NSDrawThreePartImage([self bounds], [titleBackgrounds objectAtIndex:0], 
+                         [titleBackgrounds objectAtIndex:1], 
+                         [titleBackgrounds objectAtIndex:2], NO,
+                         NSCompositeSourceOver, 1, NO);
 
-    NSGradient* aGradient = [[NSGradient alloc] initWithStartingColor:initColor
-                                                          endingColor:endColor];
-    [aGradient drawInRect:[self bounds] angle:270];
 }
 
 /**

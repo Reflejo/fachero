@@ -27,13 +27,6 @@
     [[NSGraphicsContext currentContext] setPatternPhase:NSMakePoint(xOffset, yOffset)];
     [[NSColor colorWithPatternImage:[NSImage imageNamed:@"selectedIndicator"]] set];
     NSRectFill([self bounds]);
-/*
-    NSImage *indicator = [NSImage imageNamed:@"selectedIndicator"];
-    [indicator drawInRect:dirtyRect 
-                 fromRect:dirtyRect//NSMakeRect(0, 0, indicator.size.width, indicator.size.height) 
-                operation:NSCompositeSourceOver
-                 fraction:1.0];
-*/
 }
 
 - (void)drawRect:(NSRect)dirtyRect

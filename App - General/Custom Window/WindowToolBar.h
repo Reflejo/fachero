@@ -24,6 +24,8 @@
     
     NSColor *initColor;
     NSColor *endColor;
+    
+    NSArray *titleBackgrounds;
 }
 
 -(void) setGradient:(NSColor *)initColor endColor:(NSColor *)endColor;

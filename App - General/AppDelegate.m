@@ -17,6 +17,10 @@
 
 #import "AppDelegate.h"
 #import "RosterController.h"
+#import "CustomWindow.h"
+#import "StyleManager.h"
+
+#import <WebKit/WebKit.h>
 
 @implementation AppDelegate
 
@@ -28,11 +32,14 @@
 @synthesize xmppCapabilitiesStorage;
 @synthesize xmppvCardAvatarModule;
 @synthesize xmppPing;
+@synthesize styleManager;
 
 - (id)init
 {
     if ((self = [super init]))
     {
+        styleManager = [[StyleManager alloc] initWithName:@"minimal_mod"];
+
         // Configure logging framework
         [DDLog addLogger:[DDTTYLogger sharedInstance]];
         
@@ -97,6 +104,8 @@
     
     // Start the GUI stuff
     [rosterController displaySignInSheet];
+    
+    [WebView registerURLSchemeAsLocal:@"facechat"];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
