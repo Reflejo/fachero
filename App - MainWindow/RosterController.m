@@ -18,18 +18,13 @@
 #import "RosterController.h"
 #import "WindowManager.h"
 #import "AppDelegate.h"
-#import "SSKeychain.h"
-#import "AnimationFlipWindow.h"
-
-#import <SystemConfiguration/SystemConfiguration.h>
-#import <QuartzCore/CoreAnimation.h>
 
 
 @implementation RosterController
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Setup:
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (XMPPStream *)xmppStream
 {
@@ -54,129 +49,37 @@
     
     [[self xmppStream] addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [[self xmppRoster] addDelegate:self delegateQueue:dispatch_get_main_queue()];
-    
+
     [rosterTable setTarget:self];
     [rosterTable setDoubleAction:@selector(chat:)];
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark Sign In Sheet
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-- (void)displaySignInSheet
-{
-    NSUserDefaults *dflts = [NSUserDefaults standardUserDefaults];
-    
-    [jidField setObjectValue:[dflts objectForKey:@"Account.JID"]];
-    [rememberPasswordCheckbox setObjectValue:[dflts objectForKey:@"Account.RememberPassword"]];
-    
-    if ([rememberPasswordCheckbox state] == NSOnState)
-    {
-        NSString *jidStr = [[jidField stringValue] lowercaseString];
-        
-        NSString *password = [SSKeychain passwordForService:@"FacebookChat" account:jidStr];
-        if (password)
-            [passwordField setStringValue:password];
-        
-        // If user was prompted for keychain permission, we may need to restore
-        // focus to our application
-        [NSApp activateIgnoringOtherApps:YES];
-    }
-}
-
-- (void)enableSignInUI:(BOOL)enabled
-{
-    [jidField setEnabled:enabled];
-    [passwordField setEnabled:enabled];
-    [rememberPasswordCheckbox setEnabled:enabled];
-    
-    [signInButton setEnabled:enabled];
-}
-
-- (void)updateAccountInfo
-{
-    [[self xmppStream] setHostName:kServerDomain];
-    [[self xmppStream] setHostPort:kServerPort];
-    
-    NSString *resource = (__bridge_transfer NSString *)SCDynamicStoreCopyComputerName(NULL, NULL);
-    
-    NSString *jUser = [NSString stringWithFormat:@"%@@chat.facebook.com", [jidField stringValue]];
-    XMPPJID *jid = [XMPPJID jidWithString:jUser resource:resource];
-    
-    [[self xmppStream] setMyJID:jid];
-    
-    // Update persistent info
-    NSUserDefaults *dflts = [NSUserDefaults standardUserDefaults];
-    [dflts setObject:[jidField stringValue]
-              forKey:@"Account.JID"];
-
-    if ([rememberPasswordCheckbox state] == NSOnState)
-    {
-        NSString *jidStr   = [jidField stringValue];
-        NSString *password = [passwordField stringValue];
-        
-        [SSKeychain setPassword:password forService:@"FacebookChat" account:jidStr];
-        
-        [dflts setBool:YES forKey:@"Account.RememberPassword"];
-    }
-    else
-    {
-        [dflts setBool:NO forKey:@"Account.RememberPassword"];
-    }
-    
-    [dflts synchronize];
-}
-
-- (IBAction)signIn:(id)sender
-{
-    [self updateAccountInfo];
-    
-    NSError *error = nil;
-    BOOL success;
-    
-    if(![[self xmppStream] isConnected])
-    {
-        success = [[self xmppStream] connect:&error];
-    }
-    else
-    {
-        NSString *password = [passwordField stringValue];
-        success = [[self xmppStream] authenticateWithPassword:password error:&error];
-    }
-    
-    if (success)
-    {
-        isAuthenticating = YES;
-        [self enableSignInUI:NO];
-    }
-    else
-    {
-        [messageField setStringValue:[error localizedDescription]];
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Presence Management
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)goOnline
 {
     NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
-    
+
     [[self xmppStream] sendElement:presence];
+    [rosterTable reloadData];
+    
+    [statusButtonItem setImage:[NSImage imageNamed:@"onlineIndicator"]];
 }
 
 - (void)goOffline
 {
     NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
-    [presence addAttributeWithName:@"type" stringValue:@"unavailable"];
+    [presence addAttributeWithName:@"type" stringValue:@"invisible"];
     
     [[self xmppStream] sendElement:presence];
+    [statusButtonItem setImage:[NSImage imageNamed:@"offlineIndicator"]];
 }
 
 - (IBAction)changePresence:(id)sender
 {
-    if([[sender titleOfSelectedItem] isEqualToString:@"Offline"])
+    if ([[sender titleOfSelectedItem] isEqualToString:@"Invisible"])
     {
         [self goOffline];
     }
@@ -207,9 +110,9 @@
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark IBActions
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (IBAction)chat:(id)sender
 {
     int selectedRow = [rosterTable clickedRow];
@@ -222,9 +125,9 @@
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Roster Table Data Source
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (int)numberOfRowsInTableView:(NSTableView *)tableView
 {
     return [roster count];
@@ -293,34 +196,14 @@
     return NO;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark Window animations
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (CAKeyframeAnimation *)shakeAnimation:(NSRect)frame
-{
-    CAKeyframeAnimation *shakeAnimation = [CAKeyframeAnimation animation];
-    
-    CGMutablePathRef shakePath = CGPathCreateMutable();
-    CGPathMoveToPoint(shakePath, NULL, NSMinX(frame), NSMinY(frame));
-    int index;
-    for (index = 0; index < kNumberOfShakes; ++index)
-    {
-        CGPathAddLineToPoint(shakePath, NULL, 
-                             NSMinX(frame) - frame.size.width * kVigourOfShake, 
-                             NSMinY(frame));
-        CGPathAddLineToPoint(shakePath, NULL, 
-                             NSMinX(frame) + frame.size.width * kVigourOfShake,
-                             NSMinY(frame));
-    }
-    CGPathCloseSubpath(shakePath);
-    shakeAnimation.path = shakePath;
-    shakeAnimation.duration = kDurationOfShake;
-    return shakeAnimation;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPClient Delegate Methods
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
+{
+    // Send presence
+    [self goOnline];
+}
 
 - (void)xmppvCardTempModule:(XMPPvCardTempModule *)vCardTempModule 
         didReceivevCardTemp:(XMPPvCardTemp *)vCardTemp 
@@ -340,76 +223,22 @@
     }
 }
 
-- (void)xmppStream:(XMPPStream *)sender willSecureWithSettings:(NSMutableDictionary *)settings
-{
-    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);    
-    [settings setObject:[sender hostName] forKey:(NSString *)kCFStreamSSLPeerName];
-}
-
-- (void)xmppStreamDidConnect:(XMPPStream *)sender
-{
-    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
-    
-    isOpen = YES;
-    
-    NSString *password = [passwordField stringValue];
-    
-    NSError *error = nil;
-    BOOL success = [[self xmppStream] authenticateWithPassword:password error:&error];
-    
-    if (!success)
-        [messageField setStringValue:[error localizedDescription]];
-}
-
-- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
-{
-    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
-    
-    // Update tracking variables
-    isAuthenticating = NO;
-    
-    // Close the sheet
-    if (![window isVisible])
-    {
-        AnimationFlipWindow *flip = [[AnimationFlipWindow alloc] init];
-        [flip flip:loginWindow toBack:window];
-    }
-
-    // Send presence
-    [self goOnline];
-}
-
-- (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error
-{
-    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
-    
-    // Shake window!
-    NSRect rect = [window frame];
-    [window setAnimations:[NSDictionary dictionaryWithObject:[self shakeAnimation:rect] 
-                                                      forKey:@"frameOrigin"]];
-    [[window animator] setFrameOrigin:rect.origin];
-
-    // Update tracking variables
-    isAuthenticating = NO;
-    
-    // Update GUI
-    [self enableSignInUI:YES];
-    [messageField setStringValue:@"Invalid username/password"];
-}
-
 - (void)xmppRosterDidChange:(XMPPRosterMemoryStorage *)sender
 {
     DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
     
-    if (!roster)
+    if ([[userName stringValue] isEqualToString:@""])
     {
         NSString *user = [[[sender myUser] displayName] 
                           stringByReplacingOccurrencesOfString:@"@chat.facebook.com"
                           withString:@""];
 
-        [userAvatar setStrokeColor:[NSColor blackColor]];
-        [userName setStringValue:[user capitalizedString]];
-        [self configurePhotoForAvatar:userAvatar user:[sender myUser]];
+        if (user)
+        {
+            [userAvatar setStrokeColor:[NSColor blackColor]];
+            [userName setStringValue:[user capitalizedString]];
+            [self configurePhotoForAvatar:userAvatar user:[sender myUser]];
+        }
     }
     roster = [sender sortedUsersByAvailabilityName];
     
@@ -429,21 +258,6 @@
 - (void)xmppStream:(XMPPStream *)sender didReceiveError:(id)error
 {
     DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
-}
-    
-- (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error
-{
-    DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
-    
-    if (!isOpen)
-        [messageField setStringValue:@"Cannot connect to server"];
-    
-    // Update tracking variables
-    isOpen = NO;
-    isAuthenticating = NO;
-    
-    // Update GUI
-    [self enableSignInUI:YES];
 }
 
 @end

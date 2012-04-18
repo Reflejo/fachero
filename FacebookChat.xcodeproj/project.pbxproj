@@ -36,6 +36,14 @@
 		4BA1A8D1153D438000F2DB61 /* zoom-rollover-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA1A8CA153D438000F2DB61 /* zoom-rollover-color.png */; };
 		4BA1A8DC153DEB6300F2DB61 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4BA1A8DB153DEB6300F2DB61 /* Credits.rtf */; };
 		4BA1A8E5153DFF7900F2DB61 /* AnimationFlipWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA1A8E3153DFF7900F2DB61 /* AnimationFlipWindow.m */; };
+		4BB9C71A153E680F004A6C32 /* LoadingIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C719153E680F004A6C32 /* LoadingIndicator.m */; };
+		4BB9C71F153E690F004A6C32 /* loadIndicator0.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9C71B153E690F004A6C32 /* loadIndicator0.png */; };
+		4BB9C720153E690F004A6C32 /* loadIndicator1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9C71C153E690F004A6C32 /* loadIndicator1.png */; };
+		4BB9C721153E690F004A6C32 /* loadIndicator2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9C71D153E690F004A6C32 /* loadIndicator2.png */; };
+		4BB9C722153E690F004A6C32 /* loadIndicator3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9C71E153E690F004A6C32 /* loadIndicator3.png */; };
+		4BB9C725153E6CF8004A6C32 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C724153E6CF8004A6C32 /* LoginController.m */; };
+		4BB9C728153E6D2A004A6C32 /* NSView+Fade.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9C727153E6D2A004A6C32 /* NSView+Fade.m */; };
+		4BB9C72E153E7C16004A6C32 /* settingsButtonDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BB9C72D153E7C16004A6C32 /* settingsButtonDown.png */; };
 		4BE0A19A153944400030E26B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A199153944400030E26B /* MainMenu.xib */; };
 		4BE0A19C1539444B0030E26B /* ChatWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A19B1539444B0030E26B /* ChatWindow.xib */; };
 		4BE0A1A815394DBD0030E26B /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0A1A715394DBD0030E26B /* LoginView.m */; };
@@ -209,6 +217,17 @@
 		4BA1A8DB153DEB6300F2DB61 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		4BA1A8E2153DFF7900F2DB61 /* AnimationFlipWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationFlipWindow.h; sourceTree = "<group>"; };
 		4BA1A8E3153DFF7900F2DB61 /* AnimationFlipWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationFlipWindow.m; sourceTree = "<group>"; };
+		4BB9C718153E680F004A6C32 /* LoadingIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicator.h; sourceTree = "<group>"; };
+		4BB9C719153E680F004A6C32 /* LoadingIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicator.m; sourceTree = "<group>"; };
+		4BB9C71B153E690F004A6C32 /* loadIndicator0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadIndicator0.png; sourceTree = "<group>"; };
+		4BB9C71C153E690F004A6C32 /* loadIndicator1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadIndicator1.png; sourceTree = "<group>"; };
+		4BB9C71D153E690F004A6C32 /* loadIndicator2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadIndicator2.png; sourceTree = "<group>"; };
+		4BB9C71E153E690F004A6C32 /* loadIndicator3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadIndicator3.png; sourceTree = "<group>"; };
+		4BB9C723153E6CF8004A6C32 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		4BB9C724153E6CF8004A6C32 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		4BB9C726153E6D2A004A6C32 /* NSView+Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Fade.h"; sourceTree = "<group>"; };
+		4BB9C727153E6D2A004A6C32 /* NSView+Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Fade.m"; sourceTree = "<group>"; };
+		4BB9C72D153E7C16004A6C32 /* settingsButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsButtonDown.png; sourceTree = "<group>"; };
 		4BE0A199153944400030E26B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		4BE0A19B1539444B0030E26B /* ChatWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatWindow.xib; sourceTree = "<group>"; };
 		4BE0A1A615394DBD0030E26B /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; usesTabs = 0; };
@@ -381,8 +400,8 @@
 		DCC220FE1496740700736DC1 /* XMPPRoomMessageCoreDataStorageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMPPRoomMessageCoreDataStorageObject.m; path = CoreDataStorage/XMPPRoomMessageCoreDataStorageObject.m; sourceTree = "<group>"; };
 		DCC891EB13F1D09000CDAB56 /* XMPPIDTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPIDTracker.h; sourceTree = "<group>"; };
 		DCC891EC13F1D09000CDAB56 /* XMPPIDTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPIDTracker.m; sourceTree = "<group>"; };
-		DCCE555F0BDC6FAC000E2798 /* RosterController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RosterController.h; sourceTree = "<group>"; usesTabs = 0; };
-		DCCE55600BDC6FAC000E2798 /* RosterController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RosterController.m; sourceTree = "<group>"; usesTabs = 0; };
+		DCCE555F0BDC6FAC000E2798 /* RosterController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = RosterController.h; path = ../RosterController.h; sourceTree = "<group>"; usesTabs = 0; };
+		DCCE55600BDC6FAC000E2798 /* RosterController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = RosterController.m; path = ../RosterController.m; sourceTree = "<group>"; usesTabs = 0; };
 		DCD2862E128F7294001E7AEC /* XMPPElement+Delay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XMPPElement+Delay.h"; sourceTree = "<group>"; };
 		DCD2862F128F7294001E7AEC /* XMPPElement+Delay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XMPPElement+Delay.m"; sourceTree = "<group>"; };
 		DCD493CC1223483B004BEE1A /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
@@ -554,6 +573,8 @@
 				4B10E15415389FAB00616AC4 /* ItemTableCellView.m */,
 				4B10E1561538A02300616AC4 /* ItemTableRowView.h */,
 				4B10E1571538A02300616AC4 /* ItemTableRowView.m */,
+				DCCE555F0BDC6FAC000E2798 /* RosterController.h */,
+				DCCE55600BDC6FAC000E2798 /* RosterController.m */,
 			);
 			path = "Contact List";
 			sourceTree = "<group>";
@@ -573,13 +594,18 @@
 		4B10E17C153938F200616AC4 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4BB9C72D153E7C16004A6C32 /* settingsButtonDown.png */,
+				4BB9C71B153E690F004A6C32 /* loadIndicator0.png */,
+				4BB9C71C153E690F004A6C32 /* loadIndicator1.png */,
+				4BB9C71D153E690F004A6C32 /* loadIndicator2.png */,
+				4BB9C71E153E690F004A6C32 /* loadIndicator3.png */,
 				4BA1A8BE153D3B5E00F2DB61 /* titleBackgroundLeft.png */,
 				4BA1A8BF153D3B5E00F2DB61 /* titleBackgroundMiddle.png */,
 				4BA1A8C0153D3B5E00F2DB61 /* titleBackgroundRight.png */,
 				4BA1A8AC153D320500F2DB61 /* resizeIcon.png */,
 				4BA1A8A5153D24AC00F2DB61 /* chatIcon.png */,
-				4BE0A1C8153BCF9D0030E26B /* FaceChat.icns */,
 				4BE0A1C0153A94890030E26B /* fromBubble.png */,
+				4BE0A1C8153BCF9D0030E26B /* FaceChat.icns */,
 				4BE0A1C1153A94890030E26B /* toBubble.png */,
 				4BE0A1B4153A3CD90030E26B /* selectedIndicator.png */,
 				4BE0A1B215395D770030E26B /* restrictedshine.tiff */,
@@ -604,14 +630,19 @@
 				4BA1A8E3153DFF7900F2DB61 /* AnimationFlipWindow.m */,
 			);
 			name = "Flip Animation";
-			path = "../App - MainWindow/Flip Animation";
+			path = "../Flip Animation";
 			sourceTree = "<group>";
 		};
 		4BE0A1A515394D9D0030E26B /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4BA1A8DF153DFF7900F2DB61 /* Flip Animation */,
 				4BE0A1A615394DBD0030E26B /* LoginView.h */,
 				4BE0A1A715394DBD0030E26B /* LoginView.m */,
+				4BB9C718153E680F004A6C32 /* LoadingIndicator.h */,
+				4BB9C719153E680F004A6C32 /* LoadingIndicator.m */,
+				4BB9C723153E6CF8004A6C32 /* LoginController.h */,
+				4BB9C724153E6CF8004A6C32 /* LoginController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1013,8 +1044,6 @@
 				4B10E17B153930E000616AC4 /* Custom Window */,
 				4BE0A1A515394D9D0030E26B /* Login */,
 				4B10E15515389FF000616AC4 /* Contact List */,
-				DCCE555F0BDC6FAC000E2798 /* RosterController.h */,
-				DCCE55600BDC6FAC000E2798 /* RosterController.m */,
 			);
 			path = "App - MainWindow";
 			sourceTree = "<group>";
@@ -1104,6 +1133,8 @@
 		DCEC5E55115CF48B00CAA66F /* App - General */ = {
 			isa = PBXGroup;
 			children = (
+				4BB9C726153E6D2A004A6C32 /* NSView+Fade.h */,
+				4BB9C727153E6D2A004A6C32 /* NSView+Fade.m */,
 				DC6E98E91098A4C700070ADE /* AppDelegate.h */,
 				DC6E98EA1098A4C700070ADE /* AppDelegate.m */,
 				DCF8260D0D74A5A000BFABDE /* WindowManager.h */,
@@ -1115,7 +1146,6 @@
 		DCF8260B0D74A4AE00BFABDE /* App - ChatWindow */ = {
 			isa = PBXGroup;
 			children = (
-				4BA1A8DF153DFF7900F2DB61 /* Flip Animation */,
 				4BE0A19B1539444B0030E26B /* ChatWindow.xib */,
 				DCF825F30D749A5100BFABDE /* ChatController.h */,
 				DCF825F40D749A5100BFABDE /* ChatController.m */,
@@ -1156,6 +1186,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = kodear;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FacebookChat" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1212,6 +1243,11 @@
 				4BA1A8D0153D438000F2DB61 /* zoom-active-color.png in Resources */,
 				4BA1A8D1153D438000F2DB61 /* zoom-rollover-color.png in Resources */,
 				4BA1A8DC153DEB6300F2DB61 /* Credits.rtf in Resources */,
+				4BB9C71F153E690F004A6C32 /* loadIndicator0.png in Resources */,
+				4BB9C720153E690F004A6C32 /* loadIndicator1.png in Resources */,
+				4BB9C721153E690F004A6C32 /* loadIndicator2.png in Resources */,
+				4BB9C722153E690F004A6C32 /* loadIndicator3.png in Resources */,
+				4BB9C72E153E7C16004A6C32 /* settingsButtonDown.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1319,6 +1355,9 @@
 				4BE0A1A815394DBD0030E26B /* LoginView.m in Sources */,
 				4BE0A263153C06080030E26B /* StyleManager.m in Sources */,
 				4BA1A8E5153DFF7900F2DB61 /* AnimationFlipWindow.m in Sources */,
+				4BB9C71A153E680F004A6C32 /* LoadingIndicator.m in Sources */,
+				4BB9C725153E6CF8004A6C32 /* LoginController.m in Sources */,
+				4BB9C728153E6D2A004A6C32 /* NSView+Fade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

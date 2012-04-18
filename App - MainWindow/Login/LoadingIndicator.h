@@ -1,5 +1,5 @@
 /*
- * Author: Martín Conte Mac Donell <Reflejo@gmail.com>
+ * Author: Mart√≠n Conte Mac Donell <Reflejo@gmail.com>
  * Design: Federico Abad <abadfederico@gmail.com>
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,28 +15,8 @@
  * limitations under the License.
  */
 
-#import "ItemTableCellView.h"
-#import "ItemTableRowView.h"
-#import "RoundedAvatar.h"
+#import <Cocoa/Cocoa.h>
 
-
-@interface RosterController : NSObject <NSTableViewDelegate> {
-    BOOL isOpen;
-    ItemTableCellView *lastSelected;
-
-    NSArray *roster;
-    
-    // Roster Window    
-    IBOutlet NSWindow *window;
-    IBOutlet NSTableView *rosterTable;
-    
-    // Profile info
-    IBOutlet NSTextField *userName;
-    IBOutlet RoundedAvatar *userAvatar;
-    IBOutlet NSMenuItem *statusButtonItem;
-}
-
-// Roster Window
-- (IBAction)changePresence:(id)sender;
+@interface LoadingIndicator : NSView
 
 @end

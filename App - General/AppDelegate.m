@@ -17,6 +17,7 @@
 
 #import "AppDelegate.h"
 #import "RosterController.h"
+#import "LoginController.h"
 #import "CustomWindow.h"
 #import "StyleManager.h"
 
@@ -106,7 +107,7 @@
     [xmppTime addDelegate:self delegateQueue:dispatch_get_main_queue()];
     
     // Start the GUI stuff
-    [rosterController displaySignInSheet];
+    [loginController displaySignIn];
 }
 
 - (BOOL)windowShouldClose:(id)sender 

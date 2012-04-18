@@ -18,6 +18,7 @@
 #import "XMPPFramework.h"
 
 @class RosterController;
+@class LoginController;
 @class StyleManager;
 @class CustomWindow;
 
@@ -40,6 +41,7 @@
     NSMutableArray *turnSockets;
     
     IBOutlet RosterController *rosterController;
+    IBOutlet LoginController *loginController;
     
     IBOutlet CustomWindow *window;    
 }
