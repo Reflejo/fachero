@@ -18,7 +18,6 @@
 #import "ItemTableCellView.h"
 #import "ItemTableRowView.h"
 #import "RoundedAvatar.h"
-#import "PanelTabController.h"
 
 
 @interface RosterController : NSObject <NSTableViewDelegate> {
@@ -36,14 +35,13 @@
     IBOutlet NSTextField * messageField;
 
     // Roster Window    
-    IBOutlet NSWindow    * window;
+    __strong IBOutlet NSWindow    * window;
+    __strong IBOutlet NSWindow    * loginWindow;
     IBOutlet NSTableView * rosterTable;
     
     // Profile info
     IBOutlet NSTextField * userName;
     IBOutlet RoundedAvatar * userAvatar;
-    
-    IBOutlet PanelTabController *tabs;
 }
 
 // Sign-In Sheet

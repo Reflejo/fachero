@@ -20,13 +20,13 @@
 @interface RoundedAvatar : NSView
 {
     NSImage *picture;
-    IBOutlet NSImageView *statusIndicator;
+    NSColor *strokeColor;
 }
 
 @property (nonatomic) NSImage *picture;
+@property (nonatomic) NSColor *strokeColor;
 
--(void)setOnline;
--(void)setOffline;
 -(void)setAvatar:(NSImage *)picture;
+-(void)defaultAvatar;
 
 @end

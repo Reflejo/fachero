@@ -34,13 +34,14 @@
 		4BA1A8CF153D438000F2DB61 /* minimize-rollover-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA1A8C8153D438000F2DB61 /* minimize-rollover-color.png */; };
 		4BA1A8D0153D438000F2DB61 /* zoom-active-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA1A8C9153D438000F2DB61 /* zoom-active-color.png */; };
 		4BA1A8D1153D438000F2DB61 /* zoom-rollover-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA1A8CA153D438000F2DB61 /* zoom-rollover-color.png */; };
+		4BA1A8DC153DEB6300F2DB61 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 4BA1A8DB153DEB6300F2DB61 /* Credits.rtf */; };
+		4BA1A8E5153DFF7900F2DB61 /* AnimationFlipWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA1A8E3153DFF7900F2DB61 /* AnimationFlipWindow.m */; };
 		4BE0A19A153944400030E26B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A199153944400030E26B /* MainMenu.xib */; };
 		4BE0A19C1539444B0030E26B /* ChatWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A19B1539444B0030E26B /* ChatWindow.xib */; };
 		4BE0A1A815394DBD0030E26B /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0A1A715394DBD0030E26B /* LoginView.m */; };
 		4BE0A1AA15394EBD0030E26B /* loginLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1A915394EBD0030E26B /* loginLogo.png */; };
 		4BE0A1AC15394F850030E26B /* inputBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1AB15394F850030E26B /* inputBackground.png */; };
 		4BE0A1B015395BEB0030E26B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE0A1AF15395BEB0030E26B /* QuartzCore.framework */; };
-		4BE0A1B115395CF60030E26B /* PanelTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0A1AE15395AE70030E26B /* PanelTabController.m */; };
 		4BE0A1B315395D770030E26B /* restrictedshine.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1B215395D770030E26B /* restrictedshine.tiff */; };
 		4BE0A1B5153A3CD90030E26B /* selectedIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1B4153A3CD90030E26B /* selectedIndicator.png */; };
 		4BE0A1C2153A948A0030E26B /* fromBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A1C0153A94890030E26B /* fromBubble.png */; };
@@ -205,14 +206,15 @@
 		4BA1A8C8153D438000F2DB61 /* minimize-rollover-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minimize-rollover-color.png"; sourceTree = "<group>"; };
 		4BA1A8C9153D438000F2DB61 /* zoom-active-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom-active-color.png"; sourceTree = "<group>"; };
 		4BA1A8CA153D438000F2DB61 /* zoom-rollover-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom-rollover-color.png"; sourceTree = "<group>"; };
+		4BA1A8DB153DEB6300F2DB61 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		4BA1A8E2153DFF7900F2DB61 /* AnimationFlipWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationFlipWindow.h; sourceTree = "<group>"; };
+		4BA1A8E3153DFF7900F2DB61 /* AnimationFlipWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationFlipWindow.m; sourceTree = "<group>"; };
 		4BE0A199153944400030E26B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		4BE0A19B1539444B0030E26B /* ChatWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatWindow.xib; sourceTree = "<group>"; };
 		4BE0A1A615394DBD0030E26B /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; usesTabs = 0; };
 		4BE0A1A715394DBD0030E26B /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; usesTabs = 0; };
 		4BE0A1A915394EBD0030E26B /* loginLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginLogo.png; sourceTree = "<group>"; };
 		4BE0A1AB15394F850030E26B /* inputBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inputBackground.png; sourceTree = "<group>"; };
-		4BE0A1AD15395AE70030E26B /* PanelTabController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanelTabController.h; sourceTree = "<group>"; usesTabs = 0; };
-		4BE0A1AE15395AE70030E26B /* PanelTabController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PanelTabController.m; sourceTree = "<group>"; usesTabs = 0; };
 		4BE0A1AF15395BEB0030E26B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		4BE0A1B215395D770030E26B /* restrictedshine.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = restrictedshine.tiff; path = ../../../../Penteskine/Penteskine/Penteskine/Resources/Projects/restrictedshine.tiff; sourceTree = "<group>"; };
 		4BE0A1B4153A3CD90030E26B /* selectedIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectedIndicator.png; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4BE0A1CD153BF1880030E26B /* WebKit.framework */,
 				4BE0A1AF15395BEB0030E26B /* QuartzCore.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				DC55892910DFD9040004696B /* SystemConfiguration.framework */,
@@ -481,7 +484,6 @@
 		29B97314FDCFA39411CA2CEA /* XMPPStream */ = {
 			isa = PBXGroup;
 			children = (
-				4BE0A1CD153BF1880030E26B /* WebKit.framework */,
 				DCCE55760BDC8EC8000E2798 /* XMPP */,
 				DC34A2671486BD86004F0A03 /* SSKeychain */,
 				DCEC5E55115CF48B00CAA66F /* App - General */,
@@ -502,6 +504,7 @@
 				4B10E15D1538A34700616AC4 /* constants.h */,
 				32CA4F630368D1EE00C91783 /* FacebookChat_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				4BA1A8DB153DEB6300F2DB61 /* Credits.rtf */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -592,6 +595,16 @@
 				4B10E1611538B1F500616AC4 /* settingsButton.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		4BA1A8DF153DFF7900F2DB61 /* Flip Animation */ = {
+			isa = PBXGroup;
+			children = (
+				4BA1A8E2153DFF7900F2DB61 /* AnimationFlipWindow.h */,
+				4BA1A8E3153DFF7900F2DB61 /* AnimationFlipWindow.m */,
+			);
+			name = "Flip Animation";
+			path = "../App - MainWindow/Flip Animation";
 			sourceTree = "<group>";
 		};
 		4BE0A1A515394D9D0030E26B /* Login */ = {
@@ -1000,8 +1013,6 @@
 				4B10E17B153930E000616AC4 /* Custom Window */,
 				4BE0A1A515394D9D0030E26B /* Login */,
 				4B10E15515389FF000616AC4 /* Contact List */,
-				4BE0A1AD15395AE70030E26B /* PanelTabController.h */,
-				4BE0A1AE15395AE70030E26B /* PanelTabController.m */,
 				DCCE555F0BDC6FAC000E2798 /* RosterController.h */,
 				DCCE55600BDC6FAC000E2798 /* RosterController.m */,
 			);
@@ -1104,6 +1115,7 @@
 		DCF8260B0D74A4AE00BFABDE /* App - ChatWindow */ = {
 			isa = PBXGroup;
 			children = (
+				4BA1A8DF153DFF7900F2DB61 /* Flip Animation */,
 				4BE0A19B1539444B0030E26B /* ChatWindow.xib */,
 				DCF825F30D749A5100BFABDE /* ChatController.h */,
 				DCF825F40D749A5100BFABDE /* ChatController.m */,
@@ -1113,7 +1125,7 @@
 			path = "App - ChatWindow";
 			sourceTree = "<group>";
 			tabWidth = 4;
-			usesTabs = 1;
+			usesTabs = 0;
 		};
 /* End PBXGroup section */
 
@@ -1199,6 +1211,7 @@
 				4BA1A8CF153D438000F2DB61 /* minimize-rollover-color.png in Resources */,
 				4BA1A8D0153D438000F2DB61 /* zoom-active-color.png in Resources */,
 				4BA1A8D1153D438000F2DB61 /* zoom-rollover-color.png in Resources */,
+				4BA1A8DC153DEB6300F2DB61 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1209,7 +1222,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BE0A1B115395CF60030E26B /* PanelTabController.m in Sources */,
 				4B10E1581538A17600616AC4 /* ItemTableCellView.m in Sources */,
 				4B10E1591538A17600616AC4 /* ItemTableRowView.m in Sources */,
 				4B10E1491537FE8000616AC4 /* WindowToolBar.m in Sources */,
@@ -1306,6 +1318,7 @@
 				4B10E14E153884D100616AC4 /* RoundedAvatar.m in Sources */,
 				4BE0A1A815394DBD0030E26B /* LoginView.m in Sources */,
 				4BE0A263153C06080030E26B /* StyleManager.m in Sources */,
+				4BA1A8E5153DFF7900F2DB61 /* AnimationFlipWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

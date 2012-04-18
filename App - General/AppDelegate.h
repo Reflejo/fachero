@@ -29,7 +29,7 @@
     __strong XMPPRosterMemoryStorage *xmppRosterStorage;
     __strong XMPPCapabilities *xmppCapabilities;
     __strong XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
-    __strong XMPPPing *xmppPing;
+    __strong XMPPAutoPing *xmppPing;
     __strong XMPPTime *xmppTime;
     
     __strong XMPPvCardCoreDataStorage *xmppvCardStorage;
@@ -41,8 +41,7 @@
     
     IBOutlet RosterController *rosterController;
     
-    IBOutlet CustomWindow *window;
-    
+    IBOutlet CustomWindow *window;    
 }
 
 @property (nonatomic, readonly) XMPPStream *xmppStream;
@@ -52,7 +51,7 @@
 @property (nonatomic, readonly) XMPPCapabilities *xmppCapabilities;
 @property (nonatomic, readonly) XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
 @property (nonatomic, readonly) XMPPvCardAvatarModule *xmppvCardAvatarModule;
-@property (nonatomic, readonly) XMPPPing *xmppPing;
+@property (nonatomic, readonly) XMPPAutoPing *xmppPing;
 @property (nonatomic, readonly) StyleManager *styleManager;
 
 

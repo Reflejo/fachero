@@ -24,6 +24,8 @@
 	<string>alpha</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.social-networking</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Open Source</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

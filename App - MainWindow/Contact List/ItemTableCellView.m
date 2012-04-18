@@ -17,11 +17,16 @@
 
 #import "ItemTableCellView.h"
 
-#define kNormalColor        0x404040
+#define kNormalColor        0x000000
 #define kHighLightColor     0xffffff
 
 
 @implementation ItemTableCellView
+
+- (void)awakeFromNib
+{
+    [self setStyleToField:name];
+}
 
 /**
  * Remove shadow from Cells texts and change color/image if selected
@@ -40,7 +45,6 @@
     
     [attrs addAttribute:NSShadowAttributeName value:shadow
                   range:NSMakeRange(0, [attrs length])];
-    
 
     NSColor *color = NSColorFromRGB((isSelected) ? kHighLightColor: kNormalColor);
     [attrs addAttribute:NSForegroundColorAttributeName value:color
@@ -55,19 +59,28 @@
     [name setStringValue:[user nickname]];
 }
 
-- (void)viewWillDraw 
-{
-    [super viewWillDraw];
-    [self setStyleToField:name];
-}
-
 /**
  * Set isSelected flag but also redraw cell to see correct colors
  */
 - (void)setIsSelected:(BOOL)_isSelected
 {
     isSelected = _isSelected;
-    [self setNeedsDisplay:YES];
+    [self setStyleToField:name];
 }
 
+-(void)setOnline
+{
+    if (statusIndicator)
+    {
+        [statusIndicator setHidden:NO];
+        [statusIndicator setImage:[NSImage imageNamed:@"onlineIndicator"]];
+    }
+}
+
+-(void)setOffline
+{
+    [statusIndicator setHidden:YES];
+    //    if (statusIndicator)
+    //        [statusIndicator setImage:[NSImage imageNamed:@"offlineIndicator"]];
+}
 @end

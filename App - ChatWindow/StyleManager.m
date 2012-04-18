@@ -110,6 +110,9 @@
     XMPPJID *myJID = [[delegate xmppStream] myJID];
     XMPPJID *fromJID = [message from];
     
+    // Sanitize string. Strip HTML tags and some other fixes
+    messageStr = [StyleManager stringByStrippingHTMLFrom:messageStr];
+
     // Get data from storage. It should be there. Then add into WebResources
     // if it isn't there.
     NSData *photoData = [[delegate xmppvCardAvatarModule] photoDataForJID:fromJID];
@@ -161,5 +164,30 @@
     
     [container appendChild:div];
 }
+
++ (NSString *)stringByStrippingHTMLFrom:(NSString *)html
+{
+    NSMutableString *s = [html mutableCopy];
+    [s replaceOccurrencesOfString:@"<"
+                       withString:@"&lt;"
+                          options:0
+                            range:NSMakeRange(0, [s length])];
+    [s replaceOccurrencesOfString:@">"
+                       withString:@"&gt;"
+                          options:0
+                            range:NSMakeRange(0, [s length])];
+    [s replaceOccurrencesOfString:@"\n"
+                       withString:@"<br/>"
+                          options:0
+                            range:NSMakeRange(0, [s length])];
+    [s replaceOccurrencesOfString:@" "
+                       withString:@"&nbsp;"
+                          options:0
+                            range:NSMakeRange(0, [s length])];
+
+    
+    return s; 
+}
+
 
 @end

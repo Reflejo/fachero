@@ -20,16 +20,19 @@
 #import "XMPPUser.h"
 
 @interface ItemTableCellView : NSTableCellView {
-    id <XMPPUser> user;
     IBOutlet NSTextField *name;
     
 @public
     IBOutlet RoundedAvatar *avatar;
+    IBOutlet NSImageView *statusIndicator;
+    id <XMPPUser> user;
     BOOL isSelected;
 }
 
 - (void)setIsSelected:(BOOL)isSelected;
 
 -(void)setUser:(id <XMPPUser>) user;
+-(void)setOnline;
+-(void)setOffline;
 
 @end

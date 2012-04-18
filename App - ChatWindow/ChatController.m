@@ -25,9 +25,9 @@
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message;
 @end
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @implementation ChatController
 
@@ -55,19 +55,19 @@
 {
     if ((self = [super initWithWindowNibName:@"ChatWindow"]))
     {
+        // Set window title to our contact nickname
+        [[self window] setTitle:[[self storage] userForJID:aJid].nickname];
+        
+        // Window Customization (remove minimize/zoom butons and set window background)
+        [[[self window] standardWindowButton:NSWindowMiniaturizeButton]setHidden:YES];
+        [[[self window] standardWindowButton:NSWindowZoomButton] setHidden:YES];
+        [[self window] makeFirstResponder:messageField];
+
         xmppStream = stream;
         jid = aJid;
 
         firstMessage = message;
         [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
-
-        // Set window title to our contact nickname
-        [[self window] setTitle:[[self storage] userForJID:aJid].nickname];
-
-        // Window Customization (remove minimize/zoom butons and set window background)
-        [[self window] makeFirstResponder:messageField];
-        [[[self window] standardWindowButton:NSWindowMiniaturizeButton]setHidden:YES];
-        [[[self window] standardWindowButton:NSWindowZoomButton] setHidden:YES];
     }
 
     return self;
@@ -121,6 +121,7 @@
 				   afterDelay:0];
         return;
     }
+
     AppDelegate *delegate = [NSApp delegate];
     [[delegate styleManager] addMessageToView:webView message:message];
 }

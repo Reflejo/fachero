@@ -35,8 +35,9 @@
     [[password cell] setPlaceholderAttributedString:asPassword];
     
     CustomWindow *window = (CustomWindow *)[self window];
+    [window setBarWithInitColor:kMainWindowGradientInit 
+                       endColor:kMainWindowGradientEnd];
     [window setToolbarHidden:YES];
-//    [window setContentSize:NSMakeSize([window frame].size.width, kLoginWindowHeight)];
 }
 
 - (void)drawRect:(NSRect)dirtyRect 

@@ -44,7 +44,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{196, 228}, {372, 445}}</string>
 				<int key="NSWTFlags">536870912</int>
-				<string key="NSWindowTitle">Chat Window</string>
+				<string key="NSWindowTitle"/>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
@@ -73,7 +73,7 @@
 								<string>public.url</string>
 								<string>public.url-name</string>
 							</set>
-							<string key="NSFrame">{{0, 20}, {373, 422}}</string>
+							<string key="NSFrame">{{0, 22}, {373, 420}}</string>
 							<reference key="NSSuperview" ref="476162639"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
@@ -87,7 +87,7 @@
 									<integer value="12" key="WebKitDefaultFixedFontSize"/>
 									<integer value="12" key="WebKitDefaultFontSize"/>
 									<boolean value="NO" key="WebKitJavaEnabled"/>
-									<boolean value="YES" key="WebKitJavaScriptCanOpenWindowsAutomatically"/>
+									<boolean value="NO" key="WebKitJavaScriptCanOpenWindowsAutomatically"/>
 									<boolean value="YES" key="WebKitJavaScriptEnabled"/>
 									<integer value="1" key="WebKitMinimumFontSize"/>
 									<boolean value="NO" key="WebKitPluginsEnabled"/>
@@ -203,7 +203,7 @@
 						<object class="NSBox" id="394534247">
 							<reference key="NSNextResponder" ref="476162639"/>
 							<int key="NSvFlags">34</int>
-							<string key="NSFrame">{{0, 22}, {372, 5}}</string>
+							<string key="NSFrame">{{0, 19}, {372, 5}}</string>
 							<reference key="NSSuperview" ref="476162639"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="321214343"/>

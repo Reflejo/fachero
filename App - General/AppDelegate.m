@@ -45,7 +45,7 @@
         
         // Initialize variables
         xmppStream = [[XMPPStream alloc] init];
-        //    xmppReconnect = [[XMPPReconnect alloc] init];
+        xmppReconnect = [[XMPPReconnect alloc] init];
         
         xmppRosterStorage = [[XMPPRosterMemoryStorage alloc] init];
         xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:xmppRosterStorage];
@@ -53,10 +53,7 @@
         //    xmppCapabilitiesStorage = [[XMPPCapabilitiesCoreDataStorage alloc] init];
         //    xmppCapabilities = [[XMPPCapabilities alloc] initWithCapabilitiesStorage:xmppCapabilitiesStorage];
         
-        //    xmppCapabilities.autoFetchHashedCapabilities = YES;
-        //    xmppCapabilities.autoFetchNonHashedCapabilities = NO;
-        
-        //    xmppPing = [[XMPPPing alloc] init];
+        xmppPing = [[XMPPAutoPing alloc] init];
         //    xmppTime = [[XMPPTime alloc] init];
         
         // Setup vCard support
@@ -73,12 +70,17 @@
     return self;
 }
 
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification
+{
+    [window setBarWithInitColor:kMainWindowGradientInit 
+                       endColor:kMainWindowGradientEnd];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     DDLogInfo(@"%@: %@", THIS_FILE, THIS_METHOD);
-    [window setBarWithInitColor:kMainWindowGradientInit 
-                       endColor:kMainWindowGradientEnd];
     
+    [WebView registerURLSchemeAsLocal:@"facechat"];   
     [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     
     // Activate xmpp modules
@@ -91,21 +93,31 @@
     [xmppvCardAvatarModule activate:xmppStream];
     
     // Add ourself as a delegate to anything we may be interested in
+    xmppReconnect.autoReconnect = YES;
     xmppCapabilities.autoFetchHashedCapabilities = YES;
     xmppCapabilities.autoFetchNonHashedCapabilities = NO;
     
     //    [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [xmppReconnect addDelegate:self delegateQueue:dispatch_get_main_queue()];
-    [xmppvCardAvatarModule addDelegate:self delegateQueue:dispatch_get_main_queue()];
-    [xmppvCardTempModule addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [xmppvCardAvatarModule addDelegate:rosterController delegateQueue:dispatch_get_main_queue()];
+    [xmppvCardTempModule addDelegate:rosterController delegateQueue:dispatch_get_main_queue()];
     [xmppCapabilities addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [xmppPing addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [xmppTime addDelegate:self delegateQueue:dispatch_get_main_queue()];
     
     // Start the GUI stuff
     [rosterController displaySignInSheet];
-    
-    [WebView registerURLSchemeAsLocal:@"facechat"];
+}
+
+- (BOOL)windowShouldClose:(id)sender 
+{
+    [[NSApplication sharedApplication] hide:self];
+    return NO;
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+{
+    return YES;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -116,6 +128,22 @@
 {
     DDLogVerbose(@"---------- xmppReconnect:shouldAttemptAutoReconnect: ----------");
     return YES;
+}
+
+
+- (void)xmppPing:(XMPPPing *)sender didReceivePong:(XMPPIQ *)pong withRTT:(NSTimeInterval)rtt
+{
+	NSLog(@"ASDASIJDSAJ_----AD_SA _SA D_AS D_AS D_SA");
+}
+
+- (void)xmppPing:(XMPPPing *)sender didNotReceivePong:(NSString *)pingID dueToTimeout:(NSTimeInterval)timeout
+{
+	NSLog(@"ASDASIJDSAJ_----AD_SA _SA D_AS D_AS D_SA--------------2");
+}
+
+- (void)xmppAutoPingDidTimeout:(XMPPAutoPing *)sender
+{
+    NSLog(@"ASDASIJDSAJ_----AD_SA _SA D_AS D_AS D_SA--------------3");
 }
 
 @end

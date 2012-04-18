@@ -19,7 +19,7 @@
 #import "WindowManager.h"
 #import "AppDelegate.h"
 #import "SSKeychain.h"
-#import "CustomWindow.h"
+#import "AnimationFlipWindow.h"
 
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <QuartzCore/CoreAnimation.h>
@@ -74,7 +74,7 @@
     {
         NSString *jidStr = [[jidField stringValue] lowercaseString];
         
-        NSString *password = [SSKeychain passwordForService:@"XMPPFramework" account:jidStr];
+        NSString *password = [SSKeychain passwordForService:@"FacebookChat" account:jidStr];
         if (password)
             [passwordField setStringValue:password];
         
@@ -115,7 +115,7 @@
         NSString *jidStr   = [jidField stringValue];
         NSString *password = [passwordField stringValue];
         
-        [SSKeychain setPassword:password forService:@"XMPPFramework" account:jidStr];
+        [SSKeychain setPassword:password forService:@"FacebookChat" account:jidStr];
         
         [dflts setBool:YES forKey:@"Account.RememberPassword"];
     }
@@ -195,20 +195,16 @@
     // We only need to ask the avatar module for a photo, if the roster doesn't have it.
     if (user.photo != nil)
     {
-        [avatar setPicture:user.photo];
+        [avatar setAvatar:user.photo];
     }
     else
     {
         AppDelegate *delegate = [NSApp delegate];
         
         NSData *photoData = [[delegate xmppvCardAvatarModule] photoDataForJID:user.jid];
-        
         if (photoData != nil)
             [avatar setAvatar:[[NSImage alloc] initWithData:photoData]];
     }
-    
-    if (user.isOnline) [avatar setOnline];
-    else [avatar setOffline];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -274,10 +270,17 @@
 - (NSView *)tableView:(NSTableView *)aTableView viewForTableColumn:(NSTableColumn *)tableColumn 
                   row:(NSInteger)row
 {
+    XMPPUserMemoryStorageObject *user = [roster objectAtIndex:row];
     ItemTableCellView *view = [aTableView makeViewWithIdentifier:@"ItemCell" owner:self];
     [view setUser:[roster objectAtIndex:row]];
-    [self configurePhotoForAvatar:view->avatar user:[roster objectAtIndex:row]];
-    [view setIsSelected:NO];
+    [view->avatar defaultAvatar];
+    
+    [self configurePhotoForAvatar:view->avatar user:user];
+    
+    // Change status indicator
+    if (user.isOnline) [view setOnline];
+    else [view setOffline];
+    
     return view;
 }
 
@@ -318,6 +321,25 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPClient Delegate Methods
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)xmppvCardTempModule:(XMPPvCardTempModule *)vCardTempModule 
+        didReceivevCardTemp:(XMPPvCardTemp *)vCardTemp 
+                     forJID:(XMPPJID *)jid
+{
+    ItemTableCellView *view;
+    for (int i = 0; i < [rosterTable numberOfRows]; i++)
+    {
+        view = [rosterTable viewAtColumn:0 row:i makeIfNecessary:NO];
+        if (!view) continue;
+
+        if ([jid isEqualToJID:[view->user jid]])
+        {
+            [self configurePhotoForAvatar:view->avatar user:[roster objectAtIndex:i]];
+            break;
+        }
+    }
+}
+
 - (void)xmppStream:(XMPPStream *)sender willSecureWithSettings:(NSMutableDictionary *)settings
 {
     DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);    
@@ -347,9 +369,12 @@
     isAuthenticating = NO;
     
     // Close the sheet
-    [tabs selectNextTabViewItem:nil];
-    [(CustomWindow *)window setToolbarHidden:NO];
-    
+    if (![window isVisible])
+    {
+        AnimationFlipWindow *flip = [[AnimationFlipWindow alloc] init];
+        [flip flip:loginWindow toBack:window];
+    }
+
     // Send presence
     [self goOnline];
 }
@@ -382,8 +407,9 @@
                           stringByReplacingOccurrencesOfString:@"@chat.facebook.com"
                           withString:@""];
 
-        [self configurePhotoForAvatar:userAvatar user:[sender myUser]];
+        [userAvatar setStrokeColor:[NSColor blackColor]];
         [userName setStringValue:[user capitalizedString]];
+        [self configurePhotoForAvatar:userAvatar user:[sender myUser]];
     }
     roster = [sender sortedUsersByAvailabilityName];
     
