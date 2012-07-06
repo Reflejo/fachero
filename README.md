@@ -4,7 +4,7 @@
 
 ## Overview
 
-**Fachero**, is a Facebook Messenger for Lion OSX, it uses the jabber protocol to communicate with facebook and it has a beatifull and simple design. I can't give the client a lot of attention right now due to other projects I'm working on. That's why it's open sourced right now. If users start to using it, I'll give it some love.
+**Fachero**, is a Facebook Messenger for Lion OSX, it uses the jabber protocol to communicate with facebook and it has a beatifull and simple design. I can't give the client a lot of attention right now due to other projects I'm working on. That's why it's open sourced. If users start to using it, We (Federico and I) we'll give it some love.
 
 When you try it, make sure to use your facebook vanity name as your "username". Do not use your facebook username. You can check your vanity name (or set one) using this page: <https://www.facebook.com/username/>
 
