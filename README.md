@@ -4,7 +4,7 @@
 
 ## Binary
 
-[Download the binary now!](https://docs.google.com/uc?export=download&id=0B3ePxTb-QRumTnVaYU5SRUk1ZnM)
+[Download the binary here!](https://docs.google.com/uc?export=download&id=0B3ePxTb-QRumTnVaYU5SRUk1ZnM)
 
 ## Overview
 
@@ -20,7 +20,7 @@ Chat window could be customized by HTML. Right now, it is using the theme locate
 
 ## Requirements
 
- * OSX > 10.7.x is required since I'm using CellViews and other new things.
+ * OSX >= 10.7.x is required since I'm using CellViews and other new things.
 
 ## Art Resources
 
