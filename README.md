@@ -1,33 +1,33 @@
-## Fachero
+# Fachero
 
 ![Fachero screenshots](https://github.com/Reflejo/fachero/raw/master/Art Resources/icon-show.png)
 
-### Overview
+## Overview
 
 **Fachero**, is a Facebook Messenger for Lion OSX, it uses the jabber protocol to communicate with facebook and it has a beatifull and simple design. I can't give the client a lot of attention right now due to other projects I'm working on. That's why it's open sourced right now. If users start to using it, I'll give it some love.
 
 When you try it, make sure to use your facebook vanity name as your "username". Do not use your facebook username. You can check your vanity name (or set one) using this page: <https://www.facebook.com/username/>
 
-### Themes
+## Themes
 
 ![Fachero screenshots](https://github.com/Reflejo/fachero/raw/master/Art Resources/screenshots.png)
 
 Chat window could be customized by HTML. Right now, it is using the theme located in: "Resources/Message Styles/minimal_mod.FaceChatMessageStyle/" but eventually it will be load autmatically all themes in that folder.
 
-### Requirements
+## Requirements
 
  * OSX > 10.7.x is required since I'm using CellViews and other new things.
 
-### Art Resources
+## Art Resources
 
-I have the PSD file with all art resources that Federico Abad[0] made available for everyone. I didn't add it into the repository because is heavy. I'll upload it soon.
+All art resources are inside a PSD file made by Federico Abad, and it's available for everyone. I didn't add it into the repository because is heavy. I'll upload it soon.
 
-### Authors
+## Authors
 
  * Development: Martín Conte Mac Donell <Reflejo@gmail.com> | [@Reflejo](https://twitter.com/reflejo)
  * Desgin: Federico Abad <abadfederico@gmail.com> | [@abadfederico](https://twitter.com/abadfederico)
 
-### TODO list
+## TODO list
 
  1. Tabbed conversations.
  2. Show mini-icon in OSX Status bar.
@@ -35,3 +35,7 @@ I have the PSD file with all art resources that Federico Abad[0] made available 
  4. Show theme list (With screenshots) in settings panel.
  5. Alerts (Sounds, bouncing icon).
  6. Show unread messages on status bar icon.
+ 
+## License
+
+Fachero is available under MIT.
