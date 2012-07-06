@@ -2,9 +2,13 @@
 
 ![Fachero screenshots](https://github.com/Reflejo/fachero/raw/master/Art Resources/icon-show.png)
 
+## Binary
+
+[Download the binary now!](https://docs.google.com/uc?export=download&id=0B3ePxTb-QRumTnVaYU5SRUk1ZnM)
+
 ## Overview
 
-**Fachero**, is a Facebook Messenger for Lion OSX, it uses the jabber protocol to communicate with facebook and it has a beatifull and simple design. I can't give the client a lot of attention right now due to other projects I'm working on. That's why it's open sourced. If users start to using it, We (Federico and I) we'll give it some love.
+**Fachero**, is a Facebook Messenger for Lion OSX, it uses the jabber protocol to communicate with facebook and it has a beautiful and simple design. I can't give the client a lot of attention right now due to other projects I'm working on. That's why it's open sourced. If users start to using it, We (Federico and I) we'll give it some love.
 
 When you try it, make sure to use your facebook vanity name as your "username". Do not use your facebook username. You can check your vanity name (or set one) using this page: <https://www.facebook.com/username/>
 
@@ -12,7 +16,7 @@ When you try it, make sure to use your facebook vanity name as your "username". 
 
 ![Fachero screenshots](https://github.com/Reflejo/fachero/raw/master/Art Resources/screenshots.png)
 
-Chat window could be customized by HTML. Right now, it is using the theme located in: "Resources/Message Styles/minimal_mod.FaceChatMessageStyle/" but eventually it will be load autmatically all themes in that folder.
+Chat window could be customized by HTML. Right now, it is using the theme located in: "Resources/Message Styles/minimal_mod.FaceChatMessageStyle/" but eventually it will be load automatically all themes in that folder.
 
 ## Requirements
 
@@ -20,7 +24,7 @@ Chat window could be customized by HTML. Right now, it is using the theme locate
 
 ## Art Resources
 
-All art resources are inside a PSD file made by Federico Abad, and it's available for everyone. I didn't add it into the repository because is heavy. I'll upload it soon.
+All art resources are inside a PSD file made by Federico Abad, and it's available for everyone. I didn't add it into the repository because is heavy. The PSD file is available [here](https://docs.google.com/uc?export=download&id=0B3ePxTb-QRumRWt6ZTJMVjhGbkE).
 
 ## Authors
 
