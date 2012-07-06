@@ -180,11 +180,10 @@
                        withString:@"<br/>"
                           options:0
                             range:NSMakeRange(0, [s length])];
-    [s replaceOccurrencesOfString:@" "
-                       withString:@"&nbsp;"
+    [s replaceOccurrencesOfString:@"  "
+                       withString:@"&nbsp; "
                           options:0
                             range:NSMakeRange(0, [s length])];
-
     
     return s; 
 }

@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D1107260486CEB800E47090"
-               BuildableName = "FacebookChat.app"
-               BlueprintName = "FacebookChat"
-               ReferencedContainer = "container:FacebookChat.xcodeproj">
+               BuildableName = "Fachero.app"
+               BlueprintName = "Fachero"
+               ReferencedContainer = "container:Fachero.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "FacebookChat.app"
-            BlueprintName = "FacebookChat"
-            ReferencedContainer = "container:FacebookChat.xcodeproj">
+            BuildableName = "Fachero.app"
+            BlueprintName = "Fachero"
+            ReferencedContainer = "container:Fachero.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "FacebookChat.app"
-            BlueprintName = "FacebookChat"
-            ReferencedContainer = "container:FacebookChat.xcodeproj">
+            BuildableName = "Fachero.app"
+            BlueprintName = "Fachero"
+            ReferencedContainer = "container:Fachero.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "FacebookChat.app"
-            BlueprintName = "FacebookChat"
-            ReferencedContainer = "container:FacebookChat.xcodeproj">
+            BuildableName = "Fachero.app"
+            BlueprintName = "Fachero"
+            ReferencedContainer = "container:Fachero.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

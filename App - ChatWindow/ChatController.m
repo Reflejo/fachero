@@ -55,19 +55,21 @@
 {
     if ((self = [super initWithWindowNibName:@"ChatWindow"]))
     {
+        webViewIsReady = NO;
+        xmppStream = stream;
+        jid = aJid;
+        
+        firstMessage = message;
+        [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+
+        // WARNING: This will raise an awakeFromNib call.
         // Set window title to our contact nickname
         [[self window] setTitle:[[self storage] userForJID:aJid].nickname];
         
         // Window Customization (remove minimize/zoom butons and set window background)
-        [[[self window] standardWindowButton:NSWindowMiniaturizeButton]setHidden:YES];
+        [[[self window] standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
         [[[self window] standardWindowButton:NSWindowZoomButton] setHidden:YES];
         [[self window] makeFirstResponder:messageField];
-
-        xmppStream = stream;
-        jid = aJid;
-
-        firstMessage = message;
-        [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     }
 
     return self;
@@ -124,6 +126,7 @@
 
     AppDelegate *delegate = [NSApp delegate];
     [[delegate styleManager] addMessageToView:webView message:message];
+    [self scrollToBottom];
 }
 
 
@@ -177,7 +180,6 @@
     if([message isChatMessageWithBody])
     {
         [self addMessage:message];
-        [self scrollToBottom];
     }
 }
 
@@ -206,7 +208,6 @@
 
         [messageField setStringValue:@""];
         [[self window] makeFirstResponder:messageField];
-        [self scrollToBottom];
     }
 }
 

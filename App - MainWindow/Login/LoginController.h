@@ -25,12 +25,12 @@
     IBOutlet NSTextField *passwordField;
     IBOutlet NSButton *rememberPasswordCheckbox;
     IBOutlet NSButton *signInButton;
-	
-	IBOutlet NSWindow *window;
-	IBOutlet NSWindow *contactsWindow;
-	
-	IBOutlet NSView *loginForm;
-	IBOutlet NSView *loadingIndicator;
+    
+    IBOutlet NSWindow *window;
+    IBOutlet NSWindow *contactsWindow;
+    
+    IBOutlet NSView *loginForm;
+    IBOutlet NSView *loadingIndicator;
 }
 
 - (void)displaySignIn;

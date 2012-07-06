@@ -95,7 +95,7 @@
     NSUserDefaults *dflts = [NSUserDefaults standardUserDefaults];
     [dflts setObject:[jidField stringValue]
               forKey:@"Account.JID"];
-	
+
     if ([rememberPasswordCheckbox state] == NSOnState)
     {
         NSString *jidStr   = [jidField stringValue];
@@ -115,9 +115,9 @@
 
 - (IBAction)signIn:(id)sender
 {
-	[loginForm setHidden:YES withFade:YES];
-	[loadingIndicator setHidden:NO];
-	
+    [loginForm setHidden:YES withFade:YES];
+    [loadingIndicator setHidden:NO];
+
     [self updateAccountInfo];
     
     NSError *error = nil;
@@ -140,6 +140,8 @@
     }
     else
     {
+        [loginForm setHidden:NO withFade:YES];
+        [loadingIndicator setHidden:YES];
         [self shakeWindow];
     }
 }
@@ -174,10 +176,10 @@
  */
 - (void)shakeWindow
 {
-	NSRect rect = [window frame];
-	[window setAnimations:[NSDictionary dictionaryWithObject:[self shakeAnimation:rect] 
-													  forKey:@"frameOrigin"]];
-	[[window animator] setFrameOrigin:rect.origin];
+    NSRect rect = [window frame];
+    [window setAnimations:[NSDictionary dictionaryWithObject:[self shakeAnimation:rect] 
+                                                      forKey:@"frameOrigin"]];
+    [[window animator] setFrameOrigin:rect.origin];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -201,7 +203,11 @@
     BOOL success = [[self xmppStream] authenticateWithPassword:password error:&error];
     
     if (!success)
-		[self shakeWindow];
+    {
+        [loginForm setHidden:NO withFade:YES];
+        [loadingIndicator setHidden:YES];
+        [self shakeWindow];
+    }
 }
 
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
@@ -226,7 +232,9 @@
 {
     DDLogVerbose(@"%@: %@", THIS_FILE, THIS_METHOD);
 
-	[self shakeWindow];
+    [loginForm setHidden:NO withFade:YES];
+    [loadingIndicator setHidden:YES];
+    [self shakeWindow];
     
     // Update tracking variables
     isAuthenticating = NO;

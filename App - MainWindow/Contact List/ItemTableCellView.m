@@ -65,7 +65,6 @@
 - (void)setIsSelected:(BOOL)_isSelected
 {
     isSelected = _isSelected;
-    [self setStyleToField:name];
 }
 
 -(void)setOnline

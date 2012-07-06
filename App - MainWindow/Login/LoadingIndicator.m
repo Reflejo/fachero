@@ -21,7 +21,7 @@
 
 @implementation LoadingIndicator
 
-#define kImageFrames		3
+#define kImageFrames        3
 
 /**
  * Load indicator animation
@@ -29,21 +29,21 @@
 - (id)initWithFrame:(NSRect)frame 
 {
     if (self = [super initWithFrame:frame]) 
-	{
+    {
         CAKeyframeAnimation *anim = [CAKeyframeAnimation animation];
         NSMutableArray *images = [NSMutableArray array];
         CALayer *droidLayer = [CALayer layer];
-		
+        
         CGImageSourceRef source;
         NSImage *image;
-		
+        
         for (int i = 0; i <= kImageFrames; i++)
         {
             image = [NSImage imageNamed:[NSString stringWithFormat:@"loadIndicator%d", i]]; 
             source = CGImageSourceCreateWithData((__bridge CFDataRef)[image TIFFRepresentation], 
                                                  NULL);
             [images addObject:(__bridge id)CGImageSourceCreateImageAtIndex(source, 0, NULL)];
-			
+            
             CFRelease(source);
         }
         

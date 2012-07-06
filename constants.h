@@ -29,9 +29,8 @@
                      alpha:1.0]
 
 
-//#undef DEBUG
-
 // Log levels: off, error, warn, info, verbose
+#undef DEBUG
 static const int ddLogLevel = LOG_LEVEL_OFF;
 
 #define kMainWindowGradientInit     NSColorFromRGB(0x385f96)

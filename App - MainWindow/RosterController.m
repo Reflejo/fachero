@@ -116,6 +116,7 @@
 - (IBAction)chat:(id)sender
 {
     int selectedRow = [rosterTable clickedRow];
+    selectedRow = (selectedRow < 0) ? [rosterTable selectedRow]: selectedRow;
     if (selectedRow >= 0)
     {
         XMPPStream *stream = [self xmppStream];
@@ -185,15 +186,6 @@
     else [view setOffline];
     
     return view;
-}
-
-/**
- * Do not allow editing.
- */
-- (BOOL)tableView:(NSTableView *)aTableView shouldEditTableColumn:(NSTableColumn *)aTableColumn 
-              row:(NSInteger)rowIndex
-{
-    return NO;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

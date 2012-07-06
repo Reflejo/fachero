@@ -22,6 +22,7 @@
 		4B10E1751538DD2C00616AC4 /* contactRowBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B10E1741538DD2C00616AC4 /* contactRowBackground.png */; };
 		4B10E1791538E38800616AC4 /* offlineIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B10E1771538E38800616AC4 /* offlineIndicator.png */; };
 		4B10E17A1538E38800616AC4 /* onlineIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B10E1781538E38800616AC4 /* onlineIndicator.png */; };
+		4B74129715A7786500CCBC06 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B74129615A7786400CCBC06 /* libidn.a */; };
 		4BA1A8A6153D24AC00F2DB61 /* chatIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA1A8A5153D24AC00F2DB61 /* chatIcon.png */; };
 		4BA1A8AD153D320500F2DB61 /* resizeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA1A8AC153D320500F2DB61 /* resizeIcon.png */; };
 		4BA1A8C1153D3B5E00F2DB61 /* titleBackgroundLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA1A8BE153D3B5E00F2DB61 /* titleBackgroundLeft.png */; };
@@ -58,6 +59,7 @@
 		4BE0A1CE153BF1890030E26B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE0A1CD153BF1880030E26B /* WebKit.framework */; };
 		4BE0A263153C06080030E26B /* StyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0A262153C06080030E26B /* StyleManager.m */; };
 		4BE0A283153C11770030E26B /* Message Styles in Copying Resources */ = {isa = PBXBuildFile; fileRef = 4BE0A279153C108B0030E26B /* Message Styles */; };
+		4BF7976E1565C92D00BD1C70 /* ContactListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF7976D1565C92D00BD1C70 /* ContactListTableView.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -151,7 +153,6 @@
 		DCF825F50D749A5100BFABDE /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF825F40D749A5100BFABDE /* ChatController.m */; };
 		DCF8260F0D74A5A000BFABDE /* WindowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF8260E0D74A5A000BFABDE /* WindowManager.m */; };
 		DCFE9F9E134137E2007C5391 /* NSDate+XMPPDateTimeProfiles.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFE9F9D134137E2007C5391 /* NSDate+XMPPDateTimeProfiles.m */; };
-		DCFE9FA113413B5A007C5391 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCFE9FA013413B5A007C5391 /* libidn.a */; };
 		DCFE9FA513413C4E007C5391 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCFE9FA413413C4E007C5391 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -183,7 +184,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; usesTabs = 0; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32CA4F630368D1EE00C91783 /* FacebookChat_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookChat_Prefix.pch; sourceTree = "<group>"; usesTabs = 0; };
+		32CA4F630368D1EE00C91783 /* Fachero_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fachero_Prefix.pch; sourceTree = "<group>"; usesTabs = 0; };
 		4B10E0BA1537DABA00616AC4 /* CustomWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWindow.h; sourceTree = "<group>"; usesTabs = 0; };
 		4B10E0BB1537DABA00616AC4 /* CustomWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWindow.m; sourceTree = "<group>"; usesTabs = 0; };
 		4B10E0C01537ED0900616AC4 /* avatarCover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatarCover.png; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 		4B10E1741538DD2C00616AC4 /* contactRowBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contactRowBackground.png; sourceTree = "<group>"; };
 		4B10E1771538E38800616AC4 /* offlineIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = offlineIndicator.png; sourceTree = "<group>"; };
 		4B10E1781538E38800616AC4 /* onlineIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onlineIndicator.png; sourceTree = "<group>"; };
+		4B74129615A7786400CCBC06 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = "External Libraries/XMPPFramework/Vendor/libidn/libidn.a"; sourceTree = "<group>"; };
 		4BA1A8A5153D24AC00F2DB61 /* chatIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatIcon.png; sourceTree = "<group>"; };
 		4BA1A8AC153D320500F2DB61 /* resizeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resizeIcon.png; sourceTree = "<group>"; };
 		4BA1A8BE153D3B5E00F2DB61 /* titleBackgroundLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = titleBackgroundLeft.png; sourceTree = "<group>"; };
@@ -215,16 +217,16 @@
 		4BA1A8C9153D438000F2DB61 /* zoom-active-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom-active-color.png"; sourceTree = "<group>"; };
 		4BA1A8CA153D438000F2DB61 /* zoom-rollover-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom-rollover-color.png"; sourceTree = "<group>"; };
 		4BA1A8DB153DEB6300F2DB61 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		4BA1A8E2153DFF7900F2DB61 /* AnimationFlipWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationFlipWindow.h; sourceTree = "<group>"; };
-		4BA1A8E3153DFF7900F2DB61 /* AnimationFlipWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationFlipWindow.m; sourceTree = "<group>"; };
-		4BB9C718153E680F004A6C32 /* LoadingIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicator.h; sourceTree = "<group>"; };
-		4BB9C719153E680F004A6C32 /* LoadingIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicator.m; sourceTree = "<group>"; };
+		4BA1A8E2153DFF7900F2DB61 /* AnimationFlipWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationFlipWindow.h; sourceTree = "<group>"; usesTabs = 0; };
+		4BA1A8E3153DFF7900F2DB61 /* AnimationFlipWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationFlipWindow.m; sourceTree = "<group>"; usesTabs = 0; };
+		4BB9C718153E680F004A6C32 /* LoadingIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicator.h; sourceTree = "<group>"; usesTabs = 0; };
+		4BB9C719153E680F004A6C32 /* LoadingIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicator.m; sourceTree = "<group>"; usesTabs = 0; };
 		4BB9C71B153E690F004A6C32 /* loadIndicator0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadIndicator0.png; sourceTree = "<group>"; };
 		4BB9C71C153E690F004A6C32 /* loadIndicator1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadIndicator1.png; sourceTree = "<group>"; };
 		4BB9C71D153E690F004A6C32 /* loadIndicator2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadIndicator2.png; sourceTree = "<group>"; };
 		4BB9C71E153E690F004A6C32 /* loadIndicator3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadIndicator3.png; sourceTree = "<group>"; };
-		4BB9C723153E6CF8004A6C32 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
-		4BB9C724153E6CF8004A6C32 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		4BB9C723153E6CF8004A6C32 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; usesTabs = 0; };
+		4BB9C724153E6CF8004A6C32 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; usesTabs = 0; };
 		4BB9C726153E6D2A004A6C32 /* NSView+Fade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+Fade.h"; sourceTree = "<group>"; };
 		4BB9C727153E6D2A004A6C32 /* NSView+Fade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+Fade.m"; sourceTree = "<group>"; };
 		4BB9C72D153E7C16004A6C32 /* settingsButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsButtonDown.png; sourceTree = "<group>"; };
@@ -244,8 +246,10 @@
 		4BE0A261153C06080030E26B /* StyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleManager.h; sourceTree = "<group>"; usesTabs = 0; };
 		4BE0A262153C06080030E26B /* StyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleManager.m; sourceTree = "<group>"; usesTabs = 0; };
 		4BE0A279153C108B0030E26B /* Message Styles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Message Styles"; sourceTree = "<group>"; };
+		4BF7976C1565C92D00BD1C70 /* ContactListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListTableView.h; sourceTree = "<group>"; usesTabs = 0; };
+		4BF7976D1565C92D00BD1C70 /* ContactListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactListTableView.m; sourceTree = "<group>"; usesTabs = 0; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* FacebookChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacebookChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Fachero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fachero.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0AC2771346E20800D053E3 /* XMPPvCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XMPPvCard.xcdatamodel; sourceTree = "<group>"; };
 		DC0AC2781346E20800D053E3 /* XMPPvCardAvatarCoreDataStorageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMPPvCardAvatarCoreDataStorageObject.h; path = CoreDataStorage/XMPPvCardAvatarCoreDataStorageObject.h; sourceTree = "<group>"; };
 		DC0AC2791346E20800D053E3 /* XMPPvCardAvatarCoreDataStorageObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMPPvCardAvatarCoreDataStorageObject.m; path = CoreDataStorage/XMPPvCardAvatarCoreDataStorageObject.m; sourceTree = "<group>"; };
@@ -430,7 +434,6 @@
 		DCF8260E0D74A5A000BFABDE /* WindowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowManager.m; sourceTree = "<group>"; usesTabs = 0; };
 		DCFE9F9C134137E2007C5391 /* NSDate+XMPPDateTimeProfiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+XMPPDateTimeProfiles.h"; path = "../../Extensions/XEP-0082/NSDate+XMPPDateTimeProfiles.h"; sourceTree = "<group>"; };
 		DCFE9F9D134137E2007C5391 /* NSDate+XMPPDateTimeProfiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+XMPPDateTimeProfiles.m"; path = "../../Extensions/XEP-0082/NSDate+XMPPDateTimeProfiles.m"; sourceTree = "<group>"; };
-		DCFE9FA013413B5A007C5391 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = ../XMPPFramework/Vendor/libidn/libidn.a; sourceTree = "<group>"; };
 		DCFE9FA413413C4E007C5391 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -439,10 +442,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B74129715A7786500CCBC06 /* libidn.a in Frameworks */,
 				4BE0A1CE153BF1890030E26B /* WebKit.framework in Frameworks */,
 				4BE0A1B015395BEB0030E26B /* QuartzCore.framework in Frameworks */,
 				DCFE9FA513413C4E007C5391 /* CoreLocation.framework in Frameworks */,
-				DCFE9FA113413B5A007C5391 /* libidn.a in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				DC55892A10DFD9040004696B /* SystemConfiguration.framework in Frameworks */,
 				DC1B649111518476001F0A0A /* libxml2.dylib in Frameworks */,
@@ -477,7 +480,7 @@
 				DCFE9FA413413C4E007C5391 /* CoreLocation.framework */,
 				DC1B649011518476001F0A0A /* libxml2.dylib */,
 				DCD493CC1223483B004BEE1A /* libresolv.dylib */,
-				DCFE9FA013413B5A007C5391 /* libidn.a */,
+				4B74129615A7786400CCBC06 /* libidn.a */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -495,7 +498,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* FacebookChat.app */,
+				8D1107320486CEB800E47090 /* Fachero.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -503,8 +506,7 @@
 		29B97314FDCFA39411CA2CEA /* XMPPStream */ = {
 			isa = PBXGroup;
 			children = (
-				DCCE55760BDC8EC8000E2798 /* XMPP */,
-				DC34A2671486BD86004F0A03 /* SSKeychain */,
+				4B74129415A7767200CCBC06 /* External Libraries */,
 				DCEC5E55115CF48B00CAA66F /* App - General */,
 				DCCE55630BDC6FBC000E2798 /* App - MainWindow */,
 				DCF8260B0D74A4AE00BFABDE /* App - ChatWindow */,
@@ -521,7 +523,7 @@
 			children = (
 				DCE11263140834D5007A2A46 /* XMPPFramework.h */,
 				4B10E15D1538A34700616AC4 /* constants.h */,
-				32CA4F630368D1EE00C91783 /* FacebookChat_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* Fachero_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				4BA1A8DB153DEB6300F2DB61 /* Credits.rtf */,
 			);
@@ -575,6 +577,8 @@
 				4B10E1571538A02300616AC4 /* ItemTableRowView.m */,
 				DCCE555F0BDC6FAC000E2798 /* RosterController.h */,
 				DCCE55600BDC6FAC000E2798 /* RosterController.m */,
+				4BF7976C1565C92D00BD1C70 /* ContactListTableView.h */,
+				4BF7976D1565C92D00BD1C70 /* ContactListTableView.m */,
 			);
 			path = "Contact List";
 			sourceTree = "<group>";
@@ -621,6 +625,15 @@
 				4B10E1611538B1F500616AC4 /* settingsButton.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		4B74129415A7767200CCBC06 /* External Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				DC34A2671486BD86004F0A03 /* SSKeychain */,
+				DCCE55760BDC8EC8000E2798 /* XMPP */,
+			);
+			path = "External Libraries";
 			sourceTree = "<group>";
 		};
 		4BA1A8DF153DFF7900F2DB61 /* Flip Animation */ = {
@@ -1060,7 +1073,7 @@
 				DC63E91E0E65D4EF0076E6D2 /* Extensions */,
 			);
 			name = XMPP;
-			path = ../XMPPFramework;
+			path = XMPPFramework;
 			sourceTree = "<group>";
 			tabWidth = 4;
 			usesTabs = 1;
@@ -1160,9 +1173,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* FacebookChat */ = {
+		8D1107260486CEB800E47090 /* Fachero */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "FacebookChat" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Fachero" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -1173,10 +1186,10 @@
 			);
 			dependencies = (
 			);
-			name = FacebookChat;
+			name = Fachero;
 			productInstallPath = "$(HOME)/Applications";
 			productName = XMPPStream;
-			productReference = 8D1107320486CEB800E47090 /* FacebookChat.app */;
+			productReference = 8D1107320486CEB800E47090 /* Fachero.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1188,7 +1201,7 @@
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = kodear;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FacebookChat" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Fachero" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -1202,7 +1215,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* FacebookChat */,
+				8D1107260486CEB800E47090 /* Fachero */,
 			);
 		};
 /* End PBXProject section */
@@ -1358,6 +1371,7 @@
 				4BB9C71A153E680F004A6C32 /* LoadingIndicator.m in Sources */,
 				4BB9C725153E6CF8004A6C32 /* LoginController.m in Sources */,
 				4BB9C728153E6D2A004A6C32 /* NSView+Fade.m in Sources */,
+				4BF7976E1565C92D00BD1C70 /* ContactListTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1388,14 +1402,16 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREFIX_HEADER = FacebookChat_Prefix.pch;
+				GCC_PREFIX_HEADER = Fachero_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Resources/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../XMPPFramework/Vendor/libidn\"",
+					"\"$(SRCROOT)/External Libraries/XMPPFramework/Vendor/libidn\"",
 				);
-				PRODUCT_NAME = FacebookChat;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = Fachero;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1410,14 +1426,16 @@
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
-				GCC_PREFIX_HEADER = FacebookChat_Prefix.pch;
+				GCC_PREFIX_HEADER = Fachero_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Resources/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../XMPPFramework/Vendor/libidn\"",
+					"\"$(SRCROOT)/External Libraries/XMPPFramework/Vendor/libidn\"",
 				);
-				PRODUCT_NAME = FacebookChat;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = Fachero;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1463,7 +1481,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "FacebookChat" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Fachero" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
@@ -1472,7 +1490,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "FacebookChat" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Fachero" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
