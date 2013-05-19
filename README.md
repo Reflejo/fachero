@@ -28,8 +28,8 @@ All art resources are inside a PSD file made by Federico Abad, and it's availabl
 
 ## Authors
 
- * Development: Martín Conte Mac Donell <Reflejo@gmail.com> | [@fz](https://twitter.com/reflejo)
- * Desgin: Federico Abad <abadfederico@gmail.com> | [@abadfederico](https://twitter.com/abadfederico)
+ * Devel: Martín Conte Mac Donell <Reflejo@gmail.com> | [@fz](https://twitter.com/fz)
+ * Desgin: Federico Abad <abadfederico@gmail.com> | [@abad](https://twitter.com/abad)
 
 ## TODO list
 
